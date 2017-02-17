@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>wwwMPISA</Name>
+    <ProjectGuid>8657b935-a235-4460-9f0d-79ff56f8fb2b</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>wwwMPISA</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="Dropbox\" />
+    <Folder Include="Dropbox\certs\" />
+    <Folder Include="Dropbox\Exception\" />
+    <Folder Include="Dropbox\WebAuthException\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Scripts\ng-app\" />
+    <Folder Include="Scripts\ng-app\api\" />
+    <Folder Include="Scripts\ng-app\api\models\" />
+    <Folder Include="Scripts\ng-app\controllers\" />
+    <Folder Include="Scripts\ng-app\objects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appInfo.json" />
+    <Content Include="Content\style.css" />
+    <Content Include="Dropbox\certs\trusted-certs.crt" />
+    <Content Include="index.html" />
+    <Content Include="Scripts\ng-app\api\models\content-item.js" />
+    <Content Include="Scripts\ng-app\api\models\post-content-item-details.js" />
+    <Content Include="Scripts\ng-app\api\service.js" />
+    <Content Include="Scripts\ng-app\app.js" />
+    <Content Include="Scripts\ng-app\controllers\main-controller.js" />
+    <Content Include="Scripts\ng-app\objects\async-result-api-call.js" />
+    <Content Include="Scripts\ng-app\objects\async-result.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="content.php" />
+    <Compile Include="Dropbox\AppInfo.php" />
+    <Compile Include="Dropbox\AppInfoLoadException.php" />
+    <Compile Include="Dropbox\ArrayEntryStore.php" />
+    <Compile Include="Dropbox\AuthBase.php" />
+    <Compile Include="Dropbox\AuthInfo.php" />
+    <Compile Include="Dropbox\AuthInfoLoadException.php" />
+    <Compile Include="Dropbox\autoload.php" />
+    <Compile Include="Dropbox\Checker.php" />
+    <Compile Include="Dropbox\Client.php" />
+    <Compile Include="Dropbox\Curl.php" />
+    <Compile Include="Dropbox\CurlStreamRelay.php" />
+    <Compile Include="Dropbox\DeserializeException.php" />
+    <Compile Include="Dropbox\DropboxMetadataHeaderCatcher.php" />
+    <Compile Include="Dropbox\Exception.php" />
+    <Compile Include="Dropbox\Exception\BadRequest.php" />
+    <Compile Include="Dropbox\Exception\BadResponse.php" />
+    <Compile Include="Dropbox\Exception\BadResponseCode.php" />
+    <Compile Include="Dropbox\Exception\InvalidAccessToken.php" />
+    <Compile Include="Dropbox\Exception\NetworkIO.php" />
+    <Compile Include="Dropbox\Exception\OverQuota.php" />
+    <Compile Include="Dropbox\Exception\ProtocolError.php" />
+    <Compile Include="Dropbox\Exception\RetryLater.php" />
+    <Compile Include="Dropbox\Exception\ServerError.php" />
+    <Compile Include="Dropbox\Host.php" />
+    <Compile Include="Dropbox\HttpResponse.php" />
+    <Compile Include="Dropbox\OAuth1AccessToken.php" />
+    <Compile Include="Dropbox\OAuth1Upgrader.php" />
+    <Compile Include="Dropbox\Path.php" />
+    <Compile Include="Dropbox\RequestUtil.php" />
+    <Compile Include="Dropbox\RootCertificates.php" />
+    <Compile Include="Dropbox\SdkVersion.php" />
+    <Compile Include="Dropbox\Security.php" />
+    <Compile Include="Dropbox\SSLTester.php" />
+    <Compile Include="Dropbox\StreamReadException.php" />
+    <Compile Include="Dropbox\strict.php" />
+    <Compile Include="Dropbox\Util.php" />
+    <Compile Include="Dropbox\ValueStore.php" />
+    <Compile Include="Dropbox\WebAuth.php" />
+    <Compile Include="Dropbox\WebAuthBase.php" />
+    <Compile Include="Dropbox\WebAuthException\BadRequest.php" />
+    <Compile Include="Dropbox\WebAuthException\BadState.php" />
+    <Compile Include="Dropbox\WebAuthException\Csrf.php" />
+    <Compile Include="Dropbox\WebAuthException\NotApproved.php" />
+    <Compile Include="Dropbox\WebAuthException\Provider.php" />
+    <Compile Include="Dropbox\WebAuthNoRedirect.php" />
+    <Compile Include="Dropbox\WriteMode.php" />
+    <Compile Include="index2.php" />
+  </ItemGroup>
+</Project>
