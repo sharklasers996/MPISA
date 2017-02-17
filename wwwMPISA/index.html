@@ -19,33 +19,43 @@
     <script src="./Scripts/ng-app/api/service.js"></script>
     <script src="./Scripts/ng-app/api/models/content-item.js"></script>
     <script src="./Scripts/ng-app/api/models/post-content-item-details.js"></script>
+    <script src="./Scripts/ng-app/api/models/photo-content-item-details.js"></script>
     <script src="./Scripts/ng-app/controllers/main-controller.js"></script>
 </head>
 
 <body>
     <div ng-app="mpisaApp">
         <div ng-controller="mainController">
-            <span ng-show="getContentItemsAsync.isInProgress">Loading</span>
-            <a class="btn" ng-repeat="item in contentItems" ng-click="getContentItems(item.path)">
-                {{ item.path }}
-            </a>
-            <span>{{ contentItems[0].getDetailsAsync.isInProgress }}</span>
-            <hr />
-            <h1>{{ contentItems[0].postDetails.title }}</h1>
-
-            <div ng-repeat="embed in contentItems[0].postDetails.embeds">
-                <video-embed src="embed"></video-embed>
-            </div>
-
-            <div ng-repeat="link in contentItems[0].postDetails.postLinks">
-                <a href="{{link.link}}">{{link.text}}</a>
+            <div ng-repeat="item in contentItems">
+                <span ng-show="getContentItemsAsync.isInProgress">Loading</span>
+                <a class="btn" ng-click="getContentItems(item.path)">
+                    {{ item.path }}
+                </a>
+                <span ng-show="item.getDetailsAsync.isInProgress">Loading</span>
                 <hr />
-            </div>
-            <span>{{ contentItems[0].postDetails.text }}</span>
-            
+                <h1>{{ item.postDetails.title }}</h1>
+                <h1>{{ item.photoAlbumDetails.title }}</h1>
 
-            <hr />
-            <img src="{{ contentItems[0].postDetails.posterLink }}" />
+                <span>{{ item.postDetails.text }}</span>
+                <span>{{ item.photoAlbumDetails.text }}</span>
+                <hr />
+                <div ng-repeat="link in item.postDetails.postLinks">
+                    <a href="{{link.link}}">{{link.text}}</a>
+
+                </div>
+                <hr />
+                <div ng-repeat="embed in item.postDetails.embeds">
+                    <video-embed src="embed"></video-embed>
+                </div>
+                <hr />
+                <img src="{{ item.postDetails.posterLink }}"/>
+                <img src="{{ item.photoAlbumDetails.posterLink }}"
+                     ng-click="getPhotos(item)" />
+                <hr />
+                <div ng-repeat="photo in item.photoAlbumDetails.photoLinks">
+                    <img src="{{ photo }}" />
+                </div>
+            </div>
         </div>
     </div>
 </body>

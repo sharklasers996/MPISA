@@ -36,6 +36,7 @@
     <Content Include="Dropbox\certs\trusted-certs.crt" />
     <Content Include="index.html" />
     <Content Include="Scripts\ng-app\api\models\content-item.js" />
+    <Content Include="Scripts\ng-app\api\models\photo-content-item-details.js" />
     <Content Include="Scripts\ng-app\api\models\post-content-item-details.js" />
     <Content Include="Scripts\ng-app\api\service.js" />
     <Content Include="Scripts\ng-app\app.js" />
@@ -93,6 +94,5 @@
     <Compile Include="Dropbox\WebAuthException\Provider.php" />
     <Compile Include="Dropbox\WebAuthNoRedirect.php" />
     <Compile Include="Dropbox\WriteMode.php" />
-    <Compile Include="index2.php" />
   </ItemGroup>
 </Project>

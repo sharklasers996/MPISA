@@ -5,13 +5,10 @@ var PostContentItemDetails = function (postContentItemDetailsArray, id) {
     this.textLink = null;
     this.titleLink = null;
 
-   // this.embeds = null;
-    this.links = null;
-    this.text = null;
-    this.title = null;
-
     this.id = id;
 
+    this.text = null;
+    this.title = null;
     this.postLinks = [];
     this.embeds = [];
 

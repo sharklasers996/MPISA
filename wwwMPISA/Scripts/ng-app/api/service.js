@@ -41,6 +41,23 @@
                     }).call();
             };
 
+            function _getPhotoContentItemDetails(contentItem, id) {
+                var request = ({
+                    method: "get",
+                    url: window.location.href + "content.php?path=" + contentItem.path
+                });
+
+                return new AsyncResultApiCall($q, $http,
+                    request,
+                    function (response) {
+                        var contentItemsArray = _.map(response,
+                            function (item) {
+                                return new ContentItem(item);
+                            });
+                        return new PhotoContentItemDetails(contentItemsArray, id);
+                    }).call();
+            };
+
             function _getText(textFileUrl) {
                 var request = ({
                     method: "get",
@@ -57,7 +74,8 @@
             return {
                 getContentItems: _getContentItems,
                 getText: _getText,
-                getPostContentItemDetails: _getPostContentItemDetails
+                getPostContentItemDetails: _getPostContentItemDetails,
+                getPhotoContentItemDetails: _getPhotoContentItemDetails
             }
         }];
 

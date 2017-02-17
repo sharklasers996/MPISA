@@ -21,7 +21,7 @@ ContentItem.prototype = {
         this.path = contentItem.path;
         this.uploadedAt = contentItem.uploadedAt;
         this.mimeType = contentItem.mimeType;
-        this.tempLink = contentItem.tempLink
+        this.tempLink = contentItem.tempLink;
         this.isDir = contentItem.isDir;
 
         if (this.isDir) {

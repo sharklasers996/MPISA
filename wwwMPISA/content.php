@@ -5,7 +5,7 @@ use \Dropbox as dbx;
 
 $appInfo = dbx\AppInfo::loadFromJsonFile("./appInfo.json");
 $webAuth = new dbx\WebAuthNoRedirect($appInfo, "PHP-Example/1.0");
-$dbxClient = new dbx\Client("-AhUuFSiUWwAAAAAAAAFATBKl0YJfp8KMvdZnJoIAm6v1Ad_ToqVxSofApxKLxVG", "PHP-Example/1.0");
+$dbxClient = new dbx\Client("AAn74uYygQAAAAAAAAAACiwRnRYlqLconI1wXvELeI0_r2rlpLc28Zk81ZJexMHB", "PHP-Example/1.0");
 
 $path = $_GET['path'];
 $entry = $dbxClient->getMetadataWithChildren($path);
@@ -34,7 +34,7 @@ foreach($contents as $content){
         $tempLink = $link[0];
         $isDir = false;
     }
-    
+
     $metadataArray = array(
     'path' => $contentMetadata['path'],
     'uploadedAt' => $uploadedAt,

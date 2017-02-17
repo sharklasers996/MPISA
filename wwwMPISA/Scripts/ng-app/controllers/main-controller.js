@@ -23,17 +23,26 @@
                 for (var i = $scope.pageIndex; i < $scope.itemsPerPage; i++) {
                     if ($scope.contentItems.length > i) {
 
-                        $scope.contentItems[i].getDetailsAsync = contentApi
-                            .getPostContentItemDetails($scope.contentItems[i], i)
-                            .then(function (postContentItemDetails) {
-                                $scope.contentItems[postContentItemDetails.id].postDetails = postContentItemDetails;
-                                $scope.getContentItemDetailsData($scope.contentItems[postContentItemDetails.id].postDetails);
-                            });
+                        if ($scope.contentItems[i].isPost) {
+                            $scope.contentItems[i].getDetailsAsync = contentApi
+                                .getPostContentItemDetails($scope.contentItems[i], i)
+                                .then(function (postContentItemDetails) {
+                                    $scope.contentItems[postContentItemDetails.id].postDetails = postContentItemDetails;
+                                    $scope.getPostContentItemDetailsData($scope.contentItems[postContentItemDetails.id].postDetails);
+                                });
+                        } else if ($scope.contentItems[i].isPhotoAlbum) {
+                            $scope.contentItems[i].getDetailsAsync = contentApi
+                                .getPhotoContentItemDetails($scope.contentItems[i], i)
+                                .then(function (photoContentItemDetails) {
+                                    $scope.contentItems[photoContentItemDetails.id].photoAlbumDetails = photoContentItemDetails;
+                                    $scope.getPhotoContentItemDetailsData($scope.contentItems[photoContentItemDetails.id].photoAlbumDetails);
+                                });
+                        }
                     }
                 }
             }
 
-            $scope.getContentItemDetailsData = function (contenItemDetailsItem) {
+            $scope.getPostContentItemDetailsData = function (contenItemDetailsItem) {
                 if (_.isString(contenItemDetailsItem.titleLink)) {
                     contentApi
                         .getText(contenItemDetailsItem.titleLink)
@@ -45,16 +54,13 @@
                     contentApi
                         .getText(contenItemDetailsItem.embedsLink)
                         .then(function (content) {
-                   
                             contenItemDetailsItem.addEmbeds(content);
-                            console.log();
                         });
                 }
                 if (_.isString(contenItemDetailsItem.linksLink)) {
                     contentApi
                         .getText(contenItemDetailsItem.linksLink)
                         .then(function (content) {
-                            //contenItemDetailsItem.links = content;
                             contenItemDetailsItem.addPostLinks(content);
                         });
                 }
@@ -66,6 +72,31 @@
                         });
                 }
             };
+
+            $scope.getPhotoContentItemDetailsData = function (contenItemDetailsItem) {
+                if (_.isString(contenItemDetailsItem.titleLink)) {
+                    contentApi
+                        .getText(contenItemDetailsItem.titleLink)
+                        .then(function (content) {
+                            contenItemDetailsItem.title = content;
+                        });
+                }
+                if (_.isString(contenItemDetailsItem.textLink)) {
+                    contentApi
+                        .getText(contenItemDetailsItem.textLink)
+                        .then(function (content) {
+                            contenItemDetailsItem.text = content;
+                        });
+                }
+            };
+
+            $scope.getPhotos = function (contentItem) {
+                contentItem.getDetailsAsync = contentApi
+                    .getContentItems(contentItem.photoAlbumDetails.photoAlbumPath)
+                    .then(function (response) {
+                        contentItem.photoAlbumDetails.addPhotos(response);
+                    });
+            }
 
             $scope.getAllContentItems();
         }];
