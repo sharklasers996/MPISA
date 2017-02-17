@@ -27,6 +27,7 @@
     <Folder Include="Scripts\ng-app\api\" />
     <Folder Include="Scripts\ng-app\api\models\" />
     <Folder Include="Scripts\ng-app\controllers\" />
+    <Folder Include="Scripts\ng-app\directives\" />
     <Folder Include="Scripts\ng-app\objects\" />
   </ItemGroup>
   <ItemGroup>
@@ -39,8 +40,10 @@
     <Content Include="Scripts\ng-app\api\service.js" />
     <Content Include="Scripts\ng-app\app.js" />
     <Content Include="Scripts\ng-app\controllers\main-controller.js" />
+    <Content Include="Scripts\ng-app\directives\video-embed.js" />
     <Content Include="Scripts\ng-app\objects\async-result-api-call.js" />
     <Content Include="Scripts\ng-app\objects\async-result.js" />
+    <Content Include="Scripts\ng-app\objects\post-link.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="content.php" />

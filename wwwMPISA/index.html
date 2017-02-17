@@ -2,34 +2,52 @@
 <html>
 
 <head>
-  <title>M.P.I.S.A</title>
+    <title>M.P.I.S.A</title>
 
-  <link href="./Content/style.css" rel="stylesheet" />
+    <link href="./Content/style.css" rel="stylesheet" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
-  <script src="http://underscorejs.org/underscore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
+    <script src="http://underscorejs.org/underscore.js"></script>
 
-  <script src="./Scripts/ng-app/app.js"></script>
-  <script src="./Scripts/ng-app/objects/async-result-api-call.js"></script>
-  <script src="./Scripts/ng-app/objects/async-result.js"></script>
-  <script src="./Scripts/ng-app/api/service.js"></script>
-  <script src="./Scripts/ng-app/api/models/content-item.js"></script>
-  <script src="./Scripts/ng-app/api/models/post-content-item-details.js"></script>
-  <script src="./Scripts/ng-app/controllers/main-controller.js"></script>
+    <script src="./Scripts/ng-app/app.js"></script>
+    <script src="./Scripts/ng-app/objects/async-result-api-call.js"></script>
+    <script src="./Scripts/ng-app/objects/async-result.js"></script>
+    <script src="./Scripts/ng-app/objects/post-link.js"></script>
+    <script src="./Scripts/ng-app/directives/video-embed.js"></script>
+    <script src="./Scripts/ng-app/api/service.js"></script>
+    <script src="./Scripts/ng-app/api/models/content-item.js"></script>
+    <script src="./Scripts/ng-app/api/models/post-content-item-details.js"></script>
+    <script src="./Scripts/ng-app/controllers/main-controller.js"></script>
 </head>
 
 <body>
-  <div ng-app="mpisaApp">
-    <div ng-controller="mainController">
-      <span ng-show="getContentItemsAsync.isInProgress">Loading</span>
-      <a class="btn" ng-repeat="item in contentItems" ng-click="getContentItems(item.path)">
-          {{ item.path }}
-        </a>
-        <h1>{{ contentItems[0].postDetails.title }}</h1>
+    <div ng-app="mpisaApp">
+        <div ng-controller="mainController">
+            <span ng-show="getContentItemsAsync.isInProgress">Loading</span>
+            <a class="btn" ng-repeat="item in contentItems" ng-click="getContentItems(item.path)">
+                {{ item.path }}
+            </a>
+            <span>{{ contentItems[0].getDetailsAsync.isInProgress }}</span>
+            <hr />
+            <h1>{{ contentItems[0].postDetails.title }}</h1>
+
+            <div ng-repeat="embed in contentItems[0].postDetails.embeds">
+                <video-embed src="embed"></video-embed>
+            </div>
+
+            <div ng-repeat="link in contentItems[0].postDetails.postLinks">
+                <a href="{{link.link}}">{{link.text}}</a>
+                <hr />
+            </div>
+            <span>{{ contentItems[0].postDetails.text }}</span>
+            
+
+            <hr />
+            <img src="{{ contentItems[0].postDetails.posterLink }}" />
+        </div>
     </div>
-  </div>
 </body>
 
 </html>

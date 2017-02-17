@@ -34,7 +34,7 @@ foreach($contents as $content){
         $tempLink = $link[0];
         $isDir = false;
     }
-
+    
     $metadataArray = array(
     'path' => $contentMetadata['path'],
     'uploadedAt' => $uploadedAt,
