@@ -27,8 +27,8 @@ PostDetails.prototype = {
         }
     },
     set: function (infoJson) {
-        this.title = infoJson.title;
-        this.text = infoJson.text;
+        this.title = infoJson.title.trim();
+        this.text = infoJson.text.trim();
 
         if (infoJson.embeds !== undefined) {
             this.embeds = infoJson.embeds;

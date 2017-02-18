@@ -69,14 +69,13 @@
                                             function (lyricsAlbum) {
                                                 return new LyricsAlbum(lyricsAlbum);
                                             });
-                                        console.log();
                                     });
                             }
                         }
                     });
             };
 
-            $scope.getLyrics();
+          //  $scope.getLyrics();
         }];
 
     module.controller('mainController', _controller);
