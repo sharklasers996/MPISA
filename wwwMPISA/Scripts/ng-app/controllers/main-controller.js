@@ -98,7 +98,23 @@
                     });
             }
 
+            $scope.lyricsAlbums = [];
+            $scope.getLyrics = function () {
+                contentApi
+                    .getLyricsAlbums()
+                    .then(function (lyricsAlbums) {
+                        $scope.lyricsAlbums = lyricsAlbums;
+
+                        for (var i = 0; i < $scope.lyricsAlbums.length; i++) {
+                            
+                        }
+                    });
+            };
+            $scope.getLyrics();
             $scope.getAllContentItems();
+
+
+            $scope.contentItems2 = [];
         }];
 
     module.controller('mainController', _controller);

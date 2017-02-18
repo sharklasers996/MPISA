@@ -6,7 +6,7 @@
             function _getContentItems(path) {
                 if (path === ''
                     || path === undefined) {
-                    path = '/';
+                    path = '/Content';
                 }
 
                 var request = ({
@@ -71,11 +71,46 @@
                     }).call();
             };
 
+            function _getLyricsAlbums() {
+                var request = ({
+                    method: "get",
+                    url: window.location.href + "content.php?path=/Lyrics"
+                });
+
+                return new AsyncResultApiCall($q, $http,
+                    request,
+                    function (response) {
+                        return _.map(response,
+                            function (item) {
+                                return new LyricsAlbum(item);
+                            });
+
+                    }).call();
+            };
+
+            function _getLyricsAlbumFiles(lyricsAlbum) {
+                var request = ({
+                    method: "get",
+                    url: lyricsAlbum.path
+                });
+
+                return new AsyncResultApiCall($q, $http,
+                    request,
+                    function (response) {
+                        return _.map(response,
+                            function (item) {
+                                return new Lyrics(item);
+                            });
+                    }).call();
+            }
+
             return {
                 getContentItems: _getContentItems,
                 getText: _getText,
                 getPostContentItemDetails: _getPostContentItemDetails,
-                getPhotoContentItemDetails: _getPhotoContentItemDetails
+                getPhotoContentItemDetails: _getPhotoContentItemDetails,
+                getLyricsAlbums: _getLyricsAlbums,
+                getLyricsAlbumFiles: _getLyricsAlbumFiles
             }
         }];
 
