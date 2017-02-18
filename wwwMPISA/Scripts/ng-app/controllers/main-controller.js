@@ -31,7 +31,6 @@
                     }
                 }
             };
-
             $scope.setPostDetails = function (postDetails) {
                 $scope.posts[postDetails.id].details = postDetails;
 
@@ -55,7 +54,29 @@
 
             $scope.getAllPosts();
 
+            $scope.lyrics = null;
+            $scope.getLyrics = function () {
+                contentApi
+                    .getContentItems('/Lyrics')
+                    .then(function (items) {
+                        if (items.length === 1) {
+                            var lyricsJsonContentItem = items[0];
+                            if (lyricsJsonContentItem.path.indexOf('lyrics.json') !== -1) {
+                                contentApi
+                                    .getText(lyricsJsonContentItem.tempLink)
+                                    .then(function (lyricsJson) {
+                                        $scope.lyrics = _.map(lyricsJson,
+                                            function (lyricsAlbum) {
+                                                return new LyricsAlbum(lyricsAlbum);
+                                            });
+                                        console.log();
+                                    });
+                            }
+                        }
+                    });
+            };
 
+            $scope.getLyrics();
         }];
 
     module.controller('mainController', _controller);

@@ -1,14 +1,15 @@
 ﻿var Lyrics = function (item) {
-    this.tempLink = item.tempLink;
+    this.id = null;
     this.title = null;
     this.text = null;
+
+    this.extend(item);
 };
 
 Lyrics.prototype = {
     extend: function (item) {
-        // set title
-    },
-    setText: function (text) {
-        this.text = text;
+        this.id = item.id;
+        this.title = item.title;
+        this.text = item.text;
     }
 };
