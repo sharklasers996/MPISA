@@ -2,10 +2,11 @@
 
 require_once "./Dropbox/autoload.php";
 use \Dropbox as dbx;
+include 'token.php';
 
 $appInfo = dbx\AppInfo::loadFromJsonFile("./appInfo.json");
 $webAuth = new dbx\WebAuthNoRedirect($appInfo, "PHP-Example/1.0");
-$dbxClient = new dbx\Client("AAn74uYygQAAAAAAAAAACiwRnRYlqLconI1wXvELeI0_r2rlpLc28Zk81ZJexMHB", "PHP-Example/1.0");
+$dbxClient = new dbx\Client($token, "PHP-Example/1.0");
 
 $path = $_GET['path'];
 $entry = $dbxClient->getMetadataWithChildren($path);

@@ -103,5 +103,6 @@
     <Compile Include="Dropbox\WebAuthException\Provider.php" />
     <Compile Include="Dropbox\WebAuthNoRedirect.php" />
     <Compile Include="Dropbox\WriteMode.php" />
+    <Compile Include="token.php" />
   </ItemGroup>
 </Project>
