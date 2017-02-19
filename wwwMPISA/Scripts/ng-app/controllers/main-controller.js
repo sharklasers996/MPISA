@@ -43,7 +43,7 @@
                 }
 
                 if (_.isString(postDetails.photoAlbumPath)) {
-                    $scope.posts[postDetails.id].getDetailsAsync = contentApi
+                    $scope.posts[postDetails.id].getPhotosAsync = contentApi
                         .getContentItems(postDetails.photoAlbumPath)
                         .then(function (photos) {
                             $scope.posts[postDetails.id].details.addPhotos(photos);
@@ -75,7 +75,7 @@
                     });
             };
 
-          //  $scope.getLyrics();
+            //  $scope.getLyrics();
         }];
 
     module.controller('mainController', _controller);

@@ -1,5 +1,8 @@
 ﻿var PostDetails = function (id) {
     this.id = id;
+    this.uploadedAt = null;
+
+    this.photoAlbumPageIndex = 0;
 
     this.infoLink = null;
     this.posterLink = null;
@@ -18,9 +21,11 @@ PostDetails.prototype = {
     extend: function (contentItem) {
         if (contentItem.path.indexOf('info.json') !== -1) {
             this.infoLink = contentItem.tempLink;
+            this.uploadedAt = contentItem.uploadedAt;
         }
         if (contentItem.path.indexOf('poster.') !== -1) {
             this.posterLink = contentItem.tempLink;
+            this.photoLinks.push(this.posterLink);
         }
         if (contentItem.isDir && contentItem.path.indexOf('photos') !== -1) {
             this.photoAlbumPath = contentItem.path;
@@ -42,5 +47,22 @@ PostDetails.prototype = {
          function (item) {
              return item.tempLink;
          });
+
+        this.photoLinks.splice(0, 0, this.posterLink);
+    },
+    nextPhoto: function () {
+        if (this.photoAlbumPageIndex < this.photoLinks.length - 1) {
+            this.photoAlbumPageIndex++;
+        } else {
+            this.photoAlbumPageIndex = 0;
+        }
+
+    },
+    previousPhoto: function () {
+        if (this.photoAlbumPageIndex > 0) {
+            this.photoAlbumPageIndex--;
+        } else {
+            this.photoAlbumPageIndex = this.photoLinks.length - 1;
+        }
     }
 };

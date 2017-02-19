@@ -4,7 +4,7 @@
 <head>
     <title>M.P.I.S.A</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="./Content/main.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
@@ -31,25 +31,58 @@
     <div ng-app="mpisaApp">
         <div ng-controller="mainController">
 
-            <div class="">
+            <div class="site-container">
+                <div class="loader-container loader-container-fixed"
+                     ng-show="getPostsAsync.isInProgress">
+                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                </div>
                 <div ng-repeat="post in posts">
                     <div class="post"
                          ng-cloak>
-                        <span ng-show="post.getDetailsAsync.isInProgress">Loading</span>
-                        <h1>{{ post.details.title }}</h1>
-                        <div class="poster-text-container">
-                            <img src="{{post.details.posterLink}}"/>{{post.details.text}}
+                        <div class="loader-container loader-container-absolute"
+                             ng-show="post.getDetailsAsync.isInProgress">
+                            <i class="fa fa-circle-o-notch fa-spin"></i>
                         </div>
-                        <div class="links-container">
+                        <h1>{{ post.details.title }}</h1>
+                        <div class="poster-text-container"
+                             ng-hide="::post.isPhotoAlbum">
+                            <img src="{{post.details.posterLink}}" />{{post.details.text}}
+                        </div>
+                        <div class="photo-album-text-container"
+                             ng-show="::post.isPhotoAlbum">
+                            <div class="photo-album-container"
+                                 ng-hide="post.getDetailsAsync.isInProgress">
+
+                                <div class="loader-container loader-container-absolute"
+                                     ng-show="post.getPhotosAsync.isInProgress">
+                                    <i class="fa fa-circle-o-notch fa-spin"></i>
+                                </div>
+
+                                <a href="{{post.details.photoLinks[post.details.photoAlbumPageIndex]}}"
+                                   target="_blank">
+                                    <img src="{{post.details.photoLinks[post.details.photoAlbumPageIndex]}}" />
+                                </a>
+                                <div class="photo-album-pagination">
+                                    <a class="btn-photo-album"
+                                       ng-click="post.details.previousPhoto()"><i class="fa fa-step-backward"></i></a>
+                                    <span class="photo-album-page-counter">{{ post.details.photoAlbumPageIndex + 1}}/{{post.details.photoLinks.length}}</span>
+                                    <a class="btn-photo-album"
+                                       ng-click="post.details.nextPhoto()"><i class="fa fa-step-forward"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-container">
+                                {{post.details.text}}
+                            </div>
+                        </div>
+                        <div class="links-container"
+                             ng-hide="::post.isPhotoAlbum">
                             <a ng-repeat="link in post.details.links"
                                href="{{link.url}}"
                                target="_blank">{{link.text}}</a>
                         </div>
-                        <div ng-repeat="embed in post.details.embeds">
+                        <div ng-repeat="embed in post.details.embeds"
+                             ng-hide="::post.isPhotoAlbum">
                             <video-embed src="embed"></video-embed>
-                        </div>
-                        <div ng-repeat="photo in post.details.photoLinks">
-                            <img src="{{ photo }}" />
                         </div>
                     </div>
                 </div>

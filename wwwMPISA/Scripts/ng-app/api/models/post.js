@@ -1,10 +1,11 @@
 ﻿var Post = function (contentItem) {
     this.path = null;
-    this.uploadedAt = null;
+
 
     this.isPhotoAlbum = false;
 
     this.getDetailsAsync = null;
+    this.getPhotosAsync = null;
     this.details = null;
 
     this.extend(contentItem);
