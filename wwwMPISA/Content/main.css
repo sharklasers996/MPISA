@@ -1,6 +1,13 @@
 ﻿body {
   background-color: black;
 }
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 .loader-container {
   bottom: 0;
   top: 0;
@@ -36,6 +43,12 @@
 .site-container > div > i {
   color: white;
 }
+.site-container .active {
+  display: inline-block;
+}
+.site-container .inactive {
+  display: none;
+}
 .post {
   background-color: white;
   min-width: 340px;
@@ -49,6 +62,7 @@
 }
 .post > h1 {
   margin: 0px;
+  width: 100%;
 }
 .poster-text-container {
   white-space: pre-line;
@@ -61,9 +75,8 @@
   margin-top: 5px;
   margin-bottom: 10px;
 }
-.links-container {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.poster-text-container .text-container {
+  margin-top: -20px;
 }
 .links-container > a {
   display: table;
@@ -78,6 +91,11 @@
 }
 .photo-album-text-container .photo-album-container {
   position: relative;
+  background: black;
+  color: white;
+  margin-bottom: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .photo-album-text-container .photo-album-container > a > img {
   width: 100%;
@@ -89,6 +107,8 @@
   height: 35px;
   line-height: 35px;
   width: 100%;
+  cursor: default;
+  margin-top: -5px;
 }
 .photo-album-text-container .photo-album-container .photo-album-pagination .photo-album-page-counter {
   font-size: 120%;
@@ -97,49 +117,220 @@
   display: inline-block;
   min-width: 10%;
   cursor: pointer;
+  width: 20vw;
 }
 .photo-album-text-container .photo-album-container .photo-album-pagination .btn-photo-album:hover {
   color: red;
+}
+.photo-album-text-container .photo-album-container .photo-album-pagination .btn-photo-album:focus {
+  background-color: black;
+}
+.photo-album-text-container .photo-album-container .photo-album-pagination > span {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 iframe {
   padding-top: 10px;
   width: 100%;
   height: 60vh;
 }
-@media screen and (max-width: 1200px) {
-  .post {
-    max-width: 70%;
-    margin-left: 14%;
-  }
-  iframe {
-    height: 30vh;
-  }
+.generic-container {
+  background-color: white !important;
+  margin-left: 25%;
+  width: 52%;
+  border-radius: 10px;
+  margin-top: 0px;
 }
-@media screen and (max-width: 800px) {
+.header-container {
+  display: flex;
+  margin-left: 25%;
+  width: 52%;
+}
+.header-container-right {
+  width: 100%;
+}
+.banner {
+  background-color: white !important;
+  height: 100px;
+}
+.banner > img {
+  width: 100%;
+  height: 100%;
+}
+.menu-desktop {
+  background-color: white !important;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  margin-left: 5px;
+}
+.menu-desktop > a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+  text-align: center;
+  cursor: pointer;
+}
+.menu-desktop > a:hover {
+  color: white;
+  background-color: black;
+  border-color: white;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  height: 97%;
+}
+.menu-desktop > a:active {
+  background-color: red;
+}
+.menu-desktop > a:first-child:hover {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-left: 1px solid;
+}
+.menu-desktop > a:last-child:hover {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-right: 1px solid;
+}
+.menu-desktop .active {
+  text-decoration: underline;
+  display: flex;
+}
+.music-album-title {
+  padding-left: 5%;
+  padding-top: 10px;
+  margin-bottom: 0px;
+}
+.soundcloud-container {
+  width: 90%;
+  margin-left: 5%;
+  padding-bottom: 10px;
+  border: none;
+  min-height: 460px;
+}
+@media screen and (max-width: 1000px) {
+  .loader-container i {
+    font-size: 50px;
+    margin-top: -30px;
+    margin-left: -25px;
+  }
+  .header-container {
+    width: 90%;
+    margin-left: 3%;
+  }
   .post {
     max-width: 90%;
     margin-left: 3%;
     min-width: 0px;
+    min-height: 100px;
+  }
+  .post .photo-album-container > a > img {
+    margin-bottom: 20px;
+  }
+  .post .photo-album-pagination {
+    font-size: 200%;
+    margin-bottom: 25px;
+  }
+  .post .photo-album-text-container .text-container {
+    font-size: 150%;
+  }
+  .post .photo-album-text-container .photo-album-container > div > i {
+    margin-top: -60px;
+  }
+  .post .poster-text-container,
+  .post links-container {
+    font-size: 150%;
+  }
+  .post .poster-text-container > img,
+  .post links-container > img {
+    margin: 10px;
+    float: none;
+  }
+  .post .poster-text-container {
+    font-size: 150% !important;
   }
   iframe {
     height: 30vh;
+  }
+  .links-container > a {
+    margin-bottom: 10px;
+  }
+  .generic-container {
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 10px;
   }
 }
-@media screen and (max-width: 400px) {
-  .post {
-    max-width: 90%;
-    margin-left: 0px;
-    min-width: 0px;
+@media screen and (max-width: 981px) {
+  .loader-container i {
+    font-size: 70px;
+    margin-top: -60px;
+    margin-left: -40px;
   }
-  .poster-text-container > img {
+  .post .loader-container i {
+    font-size: 50px;
+    margin-top: -30px;
+    margin-left: -35px;
+  }
+  .post > h1 {
+    margin-left: 15px;
+  }
+  .post .poster-text-container,
+  .post .links-container {
+    font-size: 130%;
+    margin-left: 2%;
+  }
+  .post .poster-text-container .text-container,
+  .post .links-container .text-container {
+    font-size: 130%;
+    margin-top: 0px;
+    width: 98%;
+  }
+  .post .poster-text-container > a,
+  .post .links-container > a {
+    font-size: 150%;
+  }
+  .post .poster-text-container > img,
+  .post .links-container > img {
+    margin: 0;
     float: none;
-    max-width: 95%;
-    margin-left: 0px;
+    max-width: 97%;
+    margin-top: -30px;
+  }
+  .post .photo-album-container {
+    width: 96%;
+    margin-left: 2%;
+  }
+  .post .photo-album-container .photo-album-pagination {
+    height: 80px;
+  }
+  .post .photo-album-container .photo-album-pagination .btn-photo-album {
+    font-size: 250%;
+  }
+  .post .photo-album-container .photo-album-pagination .photo-album-page-counter {
+    font-size: 250%;
+    margin-left: 15px;
+    margin-right: 15px;
   }
   iframe {
-    height: 30vh;
+    height: 27vh;
+    width: 96%;
+    margin-left: 2%;
   }
-  .btn-photo-album {
-    min-width: 25% !important;
+  .header-container {
+    width: 94%;
+    margin-left: 2.5%;
+  }
+  .logo {
+    display: none;
+  }
+  .banner {
+    height: 150px;
+  }
+  .menu-desktop {
+    font-size: 200%;
+    height: 100px;
   }
 }

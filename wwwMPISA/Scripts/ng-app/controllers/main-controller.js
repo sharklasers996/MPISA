@@ -1,9 +1,34 @@
-
-
 (function (module) {
     var _controller = [
-        '$scope', 'contentApi',
-        function ($scope, contentApi) {
+        '$scope', 'contentApi', '$timeout',
+        function ($scope, contentApi, $timeout) {
+
+            $scope.menu = {
+                0: "Posts",
+                1: "Photos",
+                2: "Bio",
+                3: "Music",
+                4: "Contacts"
+            };
+            $scope.menuIndex = 0;
+            $scope.setMenuIndex = function (index) {
+                $scope.menuIndex = index;
+            };
+            $scope.getMenuItemClass = function (index) {
+                if (index === $scope.menuIndex) {
+                    return 'active';
+                }
+
+                return '';
+            };
+
+            $scope.getContentClass = function (index) {
+                if (index === $scope.menuIndex) {
+                    return 'active';
+                }
+
+                return 'inactive';
+            }
 
             $scope.pageIndex = 0;
             $scope.itemsPerPage = 5;
@@ -33,6 +58,7 @@
             };
             $scope.setPostDetails = function (postDetails) {
                 $scope.posts[postDetails.id].details = postDetails;
+                $scope.posts[postDetails.id].details.setContentApi(contentApi);
 
                 if (_.isString(postDetails.infoLink)) {
                     $scope.posts[postDetails.id].getDetailsAsync = contentApi
@@ -47,7 +73,6 @@
                         .getContentItems(postDetails.photoAlbumPath)
                         .then(function (photos) {
                             $scope.posts[postDetails.id].details.addPhotos(photos);
-                            console.log();
                         });
                 }
             };

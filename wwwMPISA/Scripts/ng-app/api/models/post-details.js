@@ -1,5 +1,6 @@
 ﻿var PostDetails = function (id) {
     this.id = id;
+    this.contentApi = null;
     this.uploadedAt = null;
 
     this.photoAlbumPageIndex = 0;
@@ -64,5 +65,8 @@ PostDetails.prototype = {
         } else {
             this.photoAlbumPageIndex = this.photoLinks.length - 1;
         }
+    },
+    setContentApi: function (contentApi) {
+        this.contentApi = contentApi;
     }
 };
