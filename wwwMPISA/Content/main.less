@@ -258,6 +258,33 @@ iframe {
     min-height: 460px;
 }
 
+.contact-container-wrapper {
+    text-align: center;
+
+    &:first-child {
+        padding-top: 15px;
+        padding-bottom: 10px;
+    }
+
+    &:last-child {
+        padding-bottom: 15px;
+    }
+}
+
+.contact-container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    > a {
+        color: black;
+        text-decoration: none;
+
+        &:hover {
+            color: red;
+        }
+    }
+}
+
 @media screen and (max-width: 1000px) {
 
     .loader-container {
@@ -421,5 +448,20 @@ iframe {
     .menu-desktop {
         font-size: 200%;
         height: 100px;
+        padding-right: 10px;
+
+        .menubtn-bio {
+            width: 20%;
+        }
+
+        .menubtn-music {
+            margin-left: -15px;
+        }
+    }
+
+    .contact-container {
+        > a {
+            font-size: 250%;
+        }
     }
 }

@@ -3,6 +3,7 @@
         '$scope', 'contentApi', '$timeout',
         function ($scope, contentApi, $timeout) {
 
+            $scope.contact = 'plentovaldovas' + '@' + 'gmail.com';
             $scope.menu = {
                 0: "Posts",
                 1: "Photos",

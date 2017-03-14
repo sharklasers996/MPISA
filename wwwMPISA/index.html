@@ -16,7 +16,6 @@
     <script src="./Scripts/ng-app/objects/async-result-api-call.js"></script>
     <script src="./Scripts/ng-app/objects/async-result.js"></script>
     <script src="./Scripts/ng-app/directives/video-embed.js"></script>
-    <script src="./Scripts/ng-app/directives/refreshable.js"></script>
     <script src="./Scripts/ng-app/filters/post-filter.js"></script>
     <script src="./Scripts/ng-app/api/service.js"></script>
 
@@ -53,9 +52,11 @@
                                ng-click="setMenuIndex(0)">Įrašai</a>
                             <a ng-class="getMenuItemClass(1)"
                                ng-click="setMenuIndex(1)">Nuotraukos</a>
-                            <a ng-class="getMenuItemClass(2)"
+                            <a class="menubtn-bio"
+                               ng-class="getMenuItemClass(2)"
                                ng-click="setMenuIndex(2)">Bio</a>
-                            <a ng-class="getMenuItemClass(3)"
+                            <a class="menubtn-music"
+                               ng-class="getMenuItemClass(3)"
                                ng-click="setMenuIndex(3)">Muzika</a>
                             <a ng-class="getMenuItemClass(4)"
                                ng-click="setMenuIndex(4)">Kontaktas</a>
@@ -122,6 +123,19 @@
                     <h1 class="music-album-title">Pakeliui į Durnyną</h1>
                     <iframe class="soundcloud-container"
                             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/306497510&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+                </div>
+                <div class="generic-container"
+                     ng-show="menuIndex === 4">
+                    <div class="contact-container-wrapper">
+                        <div class="contact-container noselect">
+                            <a href="http://fb.me/MartynasPabegimasIrSunkinanciosAplinkybes"
+                               target="_blank"><i class="fa fa-facebook-official"></i>&nbsp;Martynas Pabėgimas ir Sunkinančios Aplinkybės</a>
+                        </div>
+                        <div class="contact-container">
+                            <a href="mailto:{{contact}}"
+                               target="_blank"><i class="fa fa-envelope"></i>&nbsp;{{contact}}</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
