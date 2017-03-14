@@ -16,6 +16,9 @@
 
     this.photoAlbumPath = null;
     this.photoLinks = [];
+
+    this.getPhotoBytesAsync = null;
+    this.photoBytes = [];
 };
 
 PostDetails.prototype = {
@@ -50,6 +53,14 @@ PostDetails.prototype = {
          });
 
         this.photoLinks.splice(0, 0, this.posterLink);
+
+        var _self = this;
+        this.getPhotoBytesAsync = this
+             .contentApi
+             .getImageBytes(this.photoLinks[this.photoAlbumPageIndex])
+             .then(function (response) {
+                 _self.photoBytes[_self.photoAlbumPageIndex] = arrayBufferToBase64(response);
+             });
     },
     nextPhoto: function () {
         if (this.photoAlbumPageIndex < this.photoLinks.length - 1) {
@@ -58,6 +69,15 @@ PostDetails.prototype = {
             this.photoAlbumPageIndex = 0;
         }
 
+        if (!this.photoBytes[this.photoAlbumPageIndex]) {
+            var _self = this;
+            this.getPhotoBytesAsync = this
+                 .contentApi
+                 .getImageBytes(this.photoLinks[this.photoAlbumPageIndex])
+                 .then(function (response) {
+                     _self.photoBytes[_self.photoAlbumPageIndex] = arrayBufferToBase64(response);
+                 });
+        }
     },
     previousPhoto: function () {
         if (this.photoAlbumPageIndex > 0) {

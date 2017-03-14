@@ -1,8 +1,7 @@
 (function (module) {
     var _controller = [
-        '$scope', 'contentApi', '$timeout',
-        function ($scope, contentApi, $timeout) {
-
+        '$scope', 'contentApi',
+        function ($scope, contentApi) {
             $scope.contact = 'plentovaldovas' + '@' + 'gmail.com';
             $scope.menu = {
                 0: "Posts",

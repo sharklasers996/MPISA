@@ -73,11 +73,26 @@
                     }).call();
             };
 
+            function _getImageBytes(link) {
+                var request = ({
+                    method: "get",
+                    url: link,
+                    responseType: "arraybuffer"
+                });
+
+                return new AsyncResultApiCall($q, $http,
+                      request,
+                      function (response) {
+                          return response;
+                      }).call();
+            }
+
             return {
                 getPosts: _getPosts,
                 getPostDetails: _getPostDetails,
                 getContentItems: _getContentItems,
-                getText: _getText
+                getText: _getText,
+                getImageBytes: _getImageBytes
             }
         }];
 
