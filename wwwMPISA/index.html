@@ -89,14 +89,18 @@
                                 </div>
 
                                 <a href="{{post.details.photoLinks[post.details.photoAlbumPageIndex]}}"
-                                   target="_blank">
+                                   target="_blank"
+                                   ng-hide="post.getPhotosAsync.isInProgress">
                                     <img ng-src="data:image/JPEG;base64,{{post.details.photoBytes[post.details.photoAlbumPageIndex]}}">
                                 </a>
                                 <div class="photo-album-pagination">
                                     <a class="btn-photo-album"
+                                       ng-hide="post.getPhotosAsync.isInProgress"
                                        ng-click="post.details.previousPhoto()"><i class="fa fa-step-backward"></i></a>
-                                    <span class="photo-album-page-counter">{{ post.details.photoAlbumPageIndex + 1}}/{{post.details.photoLinks.length}}</span>
+                                    <span class="photo-album-page-counter"
+                                          ng-hide="post.getPhotosAsync.isInProgress">{{ post.details.photoAlbumPageIndex + 1}}/{{post.details.photoLinks.length}}</span>
                                     <a class="btn-photo-album"
+                                       ng-hide="post.getPhotosAsync.isInProgress"
                                        ng-click="post.details.nextPhoto()"><i class="fa fa-step-forward"></i></a>
                                 </div>
                             </div>
@@ -114,6 +118,15 @@
                              ng-hide="::post.isPhotoAlbum">
                             <video-embed src="embed"></video-embed>
                         </div>
+                    </div>
+                </div>
+                <div class="generic-container"
+                     ng-show="menuIndex === 2">
+                    <div class="bio-photo-container">
+                        <img class="bio-photo" src="./Content/ausra.jpg" />
+                        <img class="bio-photo" src="./Content/dvd3.png" />
+                        <img class="bio-photo" src="./Content/gustas.jpg" />
+                        <img class="bio-photo" src="./Content/stasys2.png" />
                     </div>
                 </div>
                 <div class="generic-container"

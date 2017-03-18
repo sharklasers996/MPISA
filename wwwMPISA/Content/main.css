@@ -101,6 +101,10 @@
   width: 100%;
   display: inline-block;
 }
+.photo-album-text-container .photo-album-container .loader-container > i {
+  font-size: 20px;
+  margin-top: -10px;
+}
 .photo-album-text-container .photo-album-container .photo-album-pagination {
   text-align: center;
   display: inline-block;
@@ -230,6 +234,17 @@ iframe {
 }
 .contact-container > a:hover {
   color: red;
+}
+.bio-photo-container {
+  display: flex;
+  padding: 10px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bio-photo {
+  max-width: 243px;
+  max-height: 290px;
 }
 @media screen and (max-width: 1000px) {
   .loader-container i {

@@ -5,7 +5,6 @@
 
             var output = [];
 
-
             _.map(posts,
                 function (post) {
                     if (menuIndex === 1
@@ -15,8 +14,6 @@
 
                     output.push(post);
                 });
-
-
 
             return output;
         };
