@@ -1,7 +1,48 @@
 (function (module) {
     var _controller = [
-        '$scope', 'contentApi',
-        function ($scope, contentApi) {
+        '$scope', 'contentApi', 'angularPlayer', '$filter',
+        function ($scope, contentApi, angularPlayer, $filter) {
+
+
+            $scope.initSoundManager = function () {
+                angularPlayer.init();
+                $scope.$on('track:progress', function (event, data) {
+                    $scope.$apply(function () {
+                        $scope.progress = data;
+                    });
+                });
+                $scope.$on('track:id', function (event, data) {
+                    $scope.$apply(function () {
+                        $scope.currentPlaying = angularPlayer.currentTrackData();
+                    });
+                });
+                $scope.$on('currentTrack:position', function (event, data) {
+                    $scope.$apply(function () {
+                        $scope.currentPostion = $filter('humanTime')(data);
+                    });
+                });
+                $scope.$on('currentTrack:duration', function (event, data) {
+                    $scope.$apply(function () {
+                        $scope.currentDuration = $filter('humanTime')(data);
+                    });
+                });
+                $scope.isPlaying = false;
+                $scope.$on('music:isPlaying', function (event, data) {
+                    $scope.$apply(function () {
+                        $scope.isPlaying = data;
+                    });
+                });
+                $scope.playlist = angularPlayer.getPlaylist(); //on load
+                $scope.$on('player:playlist', function (event, data) {
+                    $scope.$apply(function () {
+                        $scope.playlist = data;
+                    });
+                });
+            };
+
+
+
+
             $scope.contact = 'plentovaldovas' + '@' + 'gmail.com';
             $scope.menu = {
                 0: "Posts",
@@ -12,13 +53,16 @@
             };
             $scope.menuIndex = 0;
             $scope.setMenuIndex = function (index) {
+                if (index === 3) {
+                    $scope.initPlayer();
+                }
+
                 $scope.menuIndex = index;
             };
             $scope.getMenuItemClass = function (index) {
                 if (index === $scope.menuIndex) {
                     return 'active';
                 }
-
                 return '';
             };
 
@@ -26,7 +70,6 @@
                 if (index === $scope.menuIndex) {
                     return 'active';
                 }
-
                 return 'inactive';
             }
 
@@ -56,6 +99,7 @@
                     }
                 }
             };
+
             $scope.setPostDetails = function (postDetails) {
                 $scope.posts[postDetails.id].details = postDetails;
                 $scope.posts[postDetails.id].details.setContentApi(contentApi);
@@ -79,28 +123,59 @@
 
             $scope.getAllPosts();
 
-            $scope.lyrics = null;
-            $scope.getLyrics = function () {
-                contentApi
-                    .getContentItems('/Lyrics')
-                    .then(function (items) {
-                        if (items.length === 1) {
-                            var lyricsJsonContentItem = items[0];
-                            if (lyricsJsonContentItem.path.indexOf('lyrics.json') !== -1) {
-                                contentApi
-                                    .getText(lyricsJsonContentItem.tempLink)
-                                    .then(function (lyricsJson) {
-                                        $scope.lyrics = _.map(lyricsJson,
-                                            function (lyricsAlbum) {
-                                                return new LyricsAlbum(lyricsAlbum);
-                                            });
-                                    });
-                            }
-                        }
+            $scope.albumManager = new AlbumManager();
+            $scope.currentSongLyrics = '';
+            $scope.currentAlbum = null;
+
+            $scope.$on('track:id', function () {
+                var trackdata = angularPlayer.currentTrackData();
+                $scope.currentSongLyrics = trackdata.lyrics;
+            });
+
+            $scope.setAlbum = function (index) {
+                var album = $scope.albumManager.albums[index];
+                $scope.currentAlbum = album;
+
+                _.map($scope.currentAlbum.songs,
+                    function (song) {
+                        angularPlayer.addTrack(song);
                     });
             };
 
-            //  $scope.getLyrics();
+            $scope.initPlayer = function () {
+                if ($scope.isPlayerInitialized()) {
+                    return;
+                }
+
+                $scope.initSoundManager();
+                $scope.setAlbum(0);
+            };
+            $scope.isPlayerInitialized = function () {
+                return $scope.currentAlbum !== null;
+            };
+
+            $scope.getSongClass = function (title) {
+                if (!$scope.isPlayerInitialized()) {
+                    return '';
+                }
+
+                var trackdata = angularPlayer.currentTrackData();
+                if (trackdata.title === title) {
+                    return 'current-song';
+                }
+                return '';
+            };
+
+            $scope.getAlbumClass = function (title) {
+                if (!$scope.isPlayerInitialized()) {
+                    return '';
+                }
+
+                if ($scope.currentAlbum.title === title) {
+                    return 'active';
+                }
+                return '';
+            };
         }];
 
     module.controller('mainController', _controller);

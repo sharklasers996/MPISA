@@ -13,9 +13,11 @@
     <script src="http://underscorejs.org/underscore.js"></script>
 
     <script src="./Scripts/tools.js"></script>
+    <script src="./Scripts/libs/angular-soundmanager2.js"></script>
     <script src="./Scripts/ng-app/app.js"></script>
     <script src="./Scripts/ng-app/objects/async-result-api-call.js"></script>
     <script src="./Scripts/ng-app/objects/async-result.js"></script>
+    <script src="./Scripts/ng-app/objects/album-manager.js"></script>
     <script src="./Scripts/ng-app/directives/video-embed.js"></script>
     <script src="./Scripts/ng-app/filters/post-filter.js"></script>
     <script src="./Scripts/ng-app/api/service.js"></script>
@@ -131,12 +133,43 @@
                 </div>
                 <div class="generic-container"
                      ng-show="menuIndex === 3">
-                    <h1 class="music-album-title">Demo 2015</h1>
-                    <iframe class="soundcloud-container"
-                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/306497510&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
-                    <h1 class="music-album-title">Pakeliui į Durnyną</h1>
-                    <iframe class="soundcloud-container"
-                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/306497510&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+                    <div class="album-collection-container noselect">
+                        <div ng-repeat="album in albumManager.albums"
+                             class="album-container"
+                             ng-class="getAlbumClass(album.title)"
+                             ng-click="setAlbum($index)">
+                            <img src="{{::album.cover}}" />
+                            <span>{{::album.title}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="generic-container player"
+                     ng-show="menuIndex === 3">
+                    <div class="player-controls noselect">
+                        <div class="player-buttons">
+                            <a prev-track><i class="fa fa-step-backward"></i></a>
+                            <a play-pause-toggle><i class="fa fa-play"></i></a>
+                            <a next-track><i class="fa fa-step-forward"></i></a>
+                        </div>
+                        <div class="seekBase" seek-track>
+                            <div class="seekLoad" ng-style="{width : ( progress + '%' ) }"></div>
+                        </div>
+                    </div>
+                    <div class="playlist-container">
+                        <div class="playlist">
+                            <a ng-repeat="song in currentAlbum.songs"
+                               music-player="play"
+                               add-song="song">
+                                <span class="song-title">{{::song.title}}</span>
+                                <span class="song-duration">01:00</span>
+                                <span class="song-position">00:00/</span>
+                            </a>
+                        </div>
+                        <div class="lyrics">
+                            {{currentSongLyrics}}
+                        </div>
+                    </div>
+                   
                 </div>
                 <div class="generic-container"
                      ng-show="menuIndex === 4">
@@ -146,8 +179,8 @@
                                target="_blank"><i class="fa fa-facebook-official"></i>&nbsp;Martynas Pabėgimas ir Sunkinančios Aplinkybės</a>
                         </div>
                         <div class="contact-container">
-                            <a href="mailto:{{contact}}"
-                               target="_blank"><i class="fa fa-envelope"></i>&nbsp;{{contact}}</a>
+                            <a href="mailto:{{::contact}}"
+                               target="_blank"><i class="fa fa-envelope"></i>&nbsp;{{::contact}}</a>
                         </div>
                     </div>
                 </div>

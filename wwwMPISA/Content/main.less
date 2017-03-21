@@ -179,6 +179,10 @@ iframe {
     margin-top: 0px;
 }
 
+.generic-container.player {
+    margin-top: 10px;
+}
+
 .header-container {
     display: flex;
     margin-left: 25%;
@@ -251,7 +255,7 @@ iframe {
     }
 }
 
-.music-album-title {
+/*.music-album-title {
     padding-left: 5%;
     padding-top: 10px;
     margin-bottom: 0px;
@@ -263,7 +267,7 @@ iframe {
     padding-bottom: 10px;
     border: none;
     min-height: 460px;
-}
+}*/
 
 .contact-container-wrapper {
     text-align: center;
@@ -303,6 +307,115 @@ iframe {
 .bio-photo {
     max-width: 243px;
     max-height: 290px;
+}
+
+.album-collection-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 460px;
+}
+
+.album-container {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    width: 200px;
+    margin-left: 10px;
+    padding: 5px;
+    cursor: pointer;
+
+    > img {
+        max-width: 100%;
+    }
+}
+
+.album-container.active {
+    background-color: black;
+    color: white;
+}
+
+.player-controls {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+
+    .player-buttons {
+        height: 50px;
+        display: flex;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+
+        > a {
+            cursor: pointer;
+            width: 33%;
+            text-align: center;
+
+            &:hover {
+                color: red;
+            }
+
+            > i {
+                margin-top: 12%;
+                font-size: 150%;
+            }
+        }
+    }
+
+    .seekBase {
+        height: 30px;
+        width: 90%;
+        border: 1px solid black;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+    }
+
+    .seekLoad {
+        height: 30px;
+        width: 0;
+        background-color: black;
+        border-radius: 5px;
+    }
+}
+
+.playlist-container {
+    display: flex;
+
+    .playlist {
+        width: 45%;
+        display: grid;
+        padding-left: 20px;
+
+        > a {
+            cursor: pointer;
+
+            &:hover {
+                color: red;
+            }
+
+            .song-title {
+                float: left;
+            }
+
+            .song-duration {
+                float: right;
+            }
+
+            .song-position {
+                float: right;
+            }
+        }
+    }
+
+    .lyrics {
+        width: 45%;
+        white-space: pre;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -484,4 +597,14 @@ iframe {
             font-size: 250%;
         }
     }
+}
+
+
+
+
+
+
+
+.current-song {
+    font-weight: bold;
 }

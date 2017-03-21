@@ -23,6 +23,7 @@
     <Folder Include="Dropbox\Exception\" />
     <Folder Include="Dropbox\WebAuthException\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Scripts\libs\" />
     <Folder Include="Scripts\ng-app\" />
     <Folder Include="Scripts\ng-app\api\" />
     <Folder Include="Scripts\ng-app\api\models\" />
@@ -43,16 +44,16 @@
     <Content Include="Content\main.min.css" />
     <Content Include="Dropbox\certs\trusted-certs.crt" />
     <Content Include="index.html" />
+    <Content Include="Scripts\libs\angular-soundmanager2.js" />
     <Content Include="Scripts\ng-app\api\models\content-item.js" />
     <Content Include="Scripts\ng-app\api\models\post-details.js" />
     <Content Include="Scripts\ng-app\api\models\post.js" />
-    <Content Include="Scripts\ng-app\api\models\lyrics-album.js" />
-    <Content Include="Scripts\ng-app\api\models\lyrics.js" />
     <Content Include="Scripts\ng-app\api\service.js" />
     <Content Include="Scripts\ng-app\app.js" />
     <Content Include="Scripts\ng-app\controllers\main-controller.js" />
     <Content Include="Scripts\ng-app\directives\video-embed.js" />
     <Content Include="Scripts\ng-app\filters\post-filter.js" />
+    <Content Include="Scripts\ng-app\objects\album-manager.js" />
     <Content Include="Scripts\ng-app\objects\async-result-api-call.js" />
     <Content Include="Scripts\ng-app\objects\async-result.js" />
     <Content Include="Scripts\tools.js" />
