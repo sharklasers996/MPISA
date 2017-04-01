@@ -25,8 +25,6 @@
     <script src="./Scripts/ng-app/api/models/content-item.js"></script>
     <script src="./Scripts/ng-app/api/models/post.js"></script>
     <script src="./Scripts/ng-app/api/models/post-details.js"></script>
-    <script src="./Scripts/ng-app/api/models/lyrics-album.js"></script>
-    <script src="./Scripts/ng-app/api/models/lyrics.js"></script>
 
     <script src="./Scripts/ng-app/controllers/main-controller.js"></script>
 </head>
@@ -124,11 +122,26 @@
                 </div>
                 <div class="generic-container"
                      ng-show="menuIndex === 2">
-                    <div class="bio-photo-container">
-                        <img class="bio-photo" src="./Content/ausra.jpg" />
-                        <img class="bio-photo" src="./Content/dvd3.png" />
-                        <img class="bio-photo" src="./Content/gustas.jpg" />
-                        <img class="bio-photo" src="./Content/stasys2.png" />
+                    <div class="bio-container noselect">
+                        <img class="bio-top-image"
+                             src="./Content/top.png" />
+                        <div class="bio-top-text">Grupė susikūrė 2012 metų rudenį, po pusantrų metų repetavimo ir narių kaitos įvyko pirmas koncertas, o po dar vienų ir pirmas albumas.</div>
+                        <div class="bio-container-child">
+                            <img class="bio-photo" src="./Content/ausra.jpg" />
+                            <div class="bio-text">"Su Stasiu ir Deividu susipažinom per muzikantų pažinčių svetainę. Po pirmo pasimatymo buvo aišku, kad santykiai bus rimti. O ir tęsiasi jau nemažai metų, nors kasmet groju vis greičiau, bet pabėgti vis napavyksta."</div>
+                        </div>
+                        <div class="bio-container-child">
+                            <img class="bio-photo" src="./Content/dvd3.png" />
+                            <div class="bio-text">"2012 rudenį įmečiau skelbimą į muzikantų svetainę su klausimu ar yra norinčių grot punk. Parašė Stasys, susitikom, išgėrėm, pasidalinom instrumentais. Geriam iki šiol, o gitarų nepaleidžiam."</div>
+                        </div>
+                        <div class="bio-container-child">
+                            <img class="bio-photo" src="./Content/gustas.png" />
+                            <div class="bio-text">"Prieš daugiau nei metus išėjo vokalistas (Kipras) ir Deividas sutikęs mane gatvėj paklausė ar norėčiau parėkaut. Buvo gan šaltoka, bet prašymas maloniai nuteikė ir aš pasinėriau į hardkorpunko liūną iš kurio išbristi visiškai nesiruošiu."</div>
+                        </div>
+                        <div class="bio-container-child">
+                            <img class="bio-photo" src="./Content/stasys2.png" />
+                            <div class="bio-text">"???????????????? ???????????????? ???????????????? ???????????????????? ?????????? ?????? ???? ???? ???????????? ???? ???????????? ???? ???? ???????? ???????????? ???????? ???????? "</div>
+                        </div>
                     </div>
                 </div>
                 <div class="generic-container"
@@ -155,21 +168,26 @@
                             <div class="seekLoad" ng-style="{width : ( progress + '%' ) }"></div>
                         </div>
                     </div>
-                    <div class="playlist-container">
-                        <div class="playlist">
-                            <a ng-repeat="song in currentAlbum.songs"
-                               music-player="play"
-                               add-song="song">
-                                <span class="song-title">{{::song.title}}</span>
-                                <span class="song-duration">01:00</span>
-                                <span class="song-position">00:00/</span>
-                            </a>
-                        </div>
-                        <div class="lyrics">
-                            {{currentSongLyrics}}
-                        </div>
+                    <table class="playlist">
+                        <tbody ng-repeat="song in currentAlbum.songs">
+                            <tr music-player="play"
+                                add-song="song">
+                                <td>{{::song.title}}</td>
+                                <td class="duration">
+                                    <span ng-show="song.title === currentSongTitle">00:00 /</span>
+                                </td>
+                                <td>
+                                    <span>01:00</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="lyrics-title">{{currentSongTitle}}</div>
+                    <div class="lyrics">
+                        {{currentSongLyrics}}
                     </div>
-                   
+
                 </div>
                 <div class="generic-container"
                      ng-show="menuIndex === 4">

@@ -125,11 +125,13 @@
 
             $scope.albumManager = new AlbumManager();
             $scope.currentSongLyrics = '';
+            $scope.currentSongTitle = '';
             $scope.currentAlbum = null;
 
             $scope.$on('track:id', function () {
                 var trackdata = angularPlayer.currentTrackData();
                 $scope.currentSongLyrics = trackdata.lyrics;
+                $scope.currentSongTitle = trackdata.title;
             });
 
             $scope.setAlbum = function (index) {
