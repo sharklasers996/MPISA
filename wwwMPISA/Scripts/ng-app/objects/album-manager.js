@@ -9,7 +9,7 @@ AlbumManager.prototype = {
 
         var demo2015 = ({
             title: 'Demo 2015',
-            cover: './Content/Albums/1.jpg',
+            cover: './Content/Images/Albums/1.jpg',
             songs: [
                 {
                     id: 'one',
@@ -96,7 +96,7 @@ AlbumManager.prototype = {
 
         var pakeliuiIDurnyna = ({
             title: 'Pakeliui į Durnyną',
-            cover: './Content/Albums/2.jpg',
+            cover: './Content/Images/Albums/2.jpg',
             songs: [
                 {
                     id: 'one',

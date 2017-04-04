@@ -57,7 +57,6 @@
     <Content Include="Scripts\ng-app\objects\async-result-api-call.js" />
     <Content Include="Scripts\ng-app\objects\async-result.js" />
     <Content Include="Scripts\tools.js" />
-    <Content Include="temp.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="content.php" />
