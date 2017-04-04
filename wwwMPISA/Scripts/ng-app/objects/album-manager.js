@@ -15,6 +15,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Martynas Pabėgimas',
                     artist: 'Demo 2015',
+                    duration: '02:08',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -24,6 +25,7 @@ AlbumManager.prototype = {
                     id: 'two',
                     title: 'Nenoriu',
                     artist: 'Demo 2015',
+                    duration: '01:01',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -33,6 +35,7 @@ AlbumManager.prototype = {
                     id: 'three',
                     title: 'Plento Valdovas',
                     artist: 'Demo 2015',
+                    duration: '01:21',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -42,6 +45,7 @@ AlbumManager.prototype = {
                     id: 'four',
                     title: 'Nekenčiu',
                     artist: 'Demo 2015',
+                    duration: '01:41',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -51,6 +55,7 @@ AlbumManager.prototype = {
                     id: 'five',
                     title: 'Šuo',
                     artist: 'Demo 2015',
+                    duration: '01:23',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -60,6 +65,7 @@ AlbumManager.prototype = {
                     id: 'six',
                     title: 'Ant Nugaros Alus',
                     artist: 'Demo 2015',
+                    duration: '00:56',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -69,6 +75,7 @@ AlbumManager.prototype = {
                     id: 'seven',
                     title: 'Aš Tikiu',
                     artist: 'Demo 2015',
+                    duration: '01:27',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -78,6 +85,7 @@ AlbumManager.prototype = {
                     id: 'eight',
                     title: 'Durnyne',
                     artist: 'Demo 2015',
+                    duration: '00:40',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -94,6 +102,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -103,6 +112,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -112,6 +122,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -121,6 +132,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -130,6 +142,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -139,6 +152,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -148,6 +162,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -157,6 +172,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -166,6 +182,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -175,6 +192,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:
@@ -184,6 +202,7 @@ AlbumManager.prototype = {
                     id: 'one',
                     title: 'Kazkas is antro albumo',
                     artist: 'Demo 2015',
+                    duration: '00:00',
                     url:
                         'http://mp3.hardcore.lt/The%20Sold%20Outs/2012%20The%20Sold%20Outs%20-%20Basement%20for%20me/01%20-%20The%20Sold%20Outs%20-%20Fucked.flac',
                     lyrics:

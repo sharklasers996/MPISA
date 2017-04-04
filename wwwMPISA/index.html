@@ -40,12 +40,12 @@
                 <div class="header-container noselect">
 
                     <div class="logo">
-                        <img src="./Content/galva.png" />
+                        <img src="./Content/Images/galva.png" />
                     </div>
 
                     <div class="header-container-right">
                         <div class="banner">
-                            <img src="./Content/banner_temp.png" />
+                            <img src="./Content/Images/banner_temp.png" />
                         </div>
 
                         <div class="menu-desktop">
@@ -124,22 +124,22 @@
                      ng-show="menuIndex === 2">
                     <div class="bio-container noselect">
                         <img class="bio-top-image"
-                             src="./Content/top.png" />
+                             src="./Content/Images/top.png" />
                         <div class="bio-top-text">Grupė susikūrė 2012 metų rudenį, po pusantrų metų repetavimo ir narių kaitos įvyko pirmas koncertas, o po dar vienų ir pirmas albumas.</div>
                         <div class="bio-container-child">
-                            <img class="bio-photo" src="./Content/ausra.jpg" />
+                            <img class="bio-photo" src="./Content/Images/ausra.jpg" />
                             <div class="bio-text">"Su Stasiu ir Deividu susipažinom per muzikantų pažinčių svetainę. Po pirmo pasimatymo buvo aišku, kad santykiai bus rimti. O ir tęsiasi jau nemažai metų, nors kasmet groju vis greičiau, bet pabėgti vis napavyksta."</div>
                         </div>
                         <div class="bio-container-child">
-                            <img class="bio-photo" src="./Content/dvd3.png" />
+                            <img class="bio-photo" src="./Content/Images/dvd3.png" />
                             <div class="bio-text">"2012 rudenį įmečiau skelbimą į muzikantų svetainę su klausimu ar yra norinčių grot punk. Parašė Stasys, susitikom, išgėrėm, pasidalinom instrumentais. Geriam iki šiol, o gitarų nepaleidžiam."</div>
                         </div>
                         <div class="bio-container-child">
-                            <img class="bio-photo" src="./Content/gustas.png" />
+                            <img class="bio-photo" src="./Content/Images/gustas.png" />
                             <div class="bio-text">"Prieš daugiau nei metus išėjo vokalistas (Kipras) ir Deividas sutikęs mane gatvėj paklausė ar norėčiau parėkaut. Buvo gan šaltoka, bet prašymas maloniai nuteikė ir aš pasinėriau į hardkorpunko liūną iš kurio išbristi visiškai nesiruošiu."</div>
                         </div>
                         <div class="bio-container-child">
-                            <img class="bio-photo" src="./Content/stasys2.png" />
+                            <img class="bio-photo" src="./Content/Images/stasys2.png" />
                             <div class="bio-text">"???????????????? ???????????????? ???????????????? ???????????????????? ?????????? ?????? ???? ???? ???????????? ???? ???????????? ???? ???? ???????? ???????????? ???????? ???????? "</div>
                         </div>
                     </div>
@@ -173,11 +173,11 @@
                             <tr music-player="play"
                                 add-song="song">
                                 <td>{{::song.title}}</td>
-                                <td class="duration">
-                                    <span ng-show="song.title === currentSongTitle">00:00 /</span>
+                                <td class="position">
+                                    <span ng-show="song.title === currentSongTitle">{{currentPostion}} /</span>
                                 </td>
-                                <td>
-                                    <span>01:00</span>
+                                <td class="duration">
+                                    <span>{{::song.duration}}</span>
                                 </td>
                             </tr>
                         </tbody>

@@ -181,6 +181,7 @@ iframe {
 
 .generic-container.player {
     margin-top: 10px;
+    padding-top: 30px;
 }
 
 .header-container {
@@ -364,15 +365,13 @@ iframe {
 }
 
 .player-controls {
-    width: 90%;
+    width: 82%;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
+    margin-bottom: 20px;
 
     .player-buttons {
-        height: 50px;
         display: flex;
-        width: 60%;
         margin-left: auto;
         margin-right: auto;
 
@@ -380,13 +379,13 @@ iframe {
             cursor: pointer;
             width: 33%;
             text-align: center;
+            line-height: 6vh;
 
             &:hover {
                 color: red;
             }
 
             > i {
-                margin-top: 12%;
                 font-size: 150%;
             }
         }
@@ -394,24 +393,24 @@ iframe {
 
     .seekBase {
         height: 30px;
-        width: 90%;
         border: 1px solid black;
         margin-left: auto;
         margin-right: auto;
-        border-radius: 5px;
+        border-radius: 10px;
     }
 
     .seekLoad {
         height: 30px;
         width: 0;
         background-color: black;
-        border-radius: 5px;
+        border-radius: 10px;
     }
 }
 
 .playlist {
-    width: 91%;
-    margin-left: 9%;
+    width: 82%;
+    margin: auto;
+    font-size: 130%;
 
     > tbody > tr {
         &:hover {
@@ -419,11 +418,19 @@ iframe {
             cursor: pointer;
         }
 
-        .duration {
+        .position {
             text-align: right;
             min-width: 21%;
         }
+
+        .duration {
+            width: 5%;
+        }
     }
+}
+
+.active-song {
+    font-weight: bold;
 }
 
 .lyrics-title {
@@ -525,6 +532,11 @@ iframe {
             margin-left: -40px;
         }
     }
+
+    .generic-container.player {
+        padding-top: 50px;
+    }
+
 
     .post {
 
@@ -648,6 +660,36 @@ iframe {
         width: 80%;
         padding-left: 0px;
         padding-top: 10px;
+    }
+
+    .player-controls {
+        margin-bottom: 50px;
+
+        .player-buttons {
+
+            > a {
+                > i {
+                    font-size: 350%;
+                }
+            }
+        }
+
+        .seekBase {
+            height: 50px;
+        }
+
+        .seekLoad {
+            height: 50px;
+        }
+    }
+
+    .playlist {
+        font-size: 250%;
+        line-height: 150%;
+    }
+
+    .lyrics-title {
+        padding-top: 50px;
     }
 }
 

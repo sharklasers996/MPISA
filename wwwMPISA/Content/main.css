@@ -147,6 +147,7 @@ iframe {
 }
 .generic-container.player {
   margin-top: 10px;
+  padding-top: 30px;
 }
 .header-container {
   display: flex;
@@ -297,15 +298,13 @@ iframe {
   color: white;
 }
 .player-controls {
-  width: 90%;
+  width: 82%;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px;
+  margin-bottom: 20px;
 }
 .player-controls .player-buttons {
-  height: 50px;
   display: flex;
-  width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -313,39 +312,45 @@ iframe {
   cursor: pointer;
   width: 33%;
   text-align: center;
+  line-height: 6vh;
 }
 .player-controls .player-buttons > a:hover {
   color: red;
 }
 .player-controls .player-buttons > a > i {
-  margin-top: 12%;
   font-size: 150%;
 }
 .player-controls .seekBase {
   height: 30px;
-  width: 90%;
   border: 1px solid black;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .player-controls .seekLoad {
   height: 30px;
   width: 0;
   background-color: black;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .playlist {
-  width: 91%;
-  margin-left: 9%;
+  width: 82%;
+  margin: auto;
+  font-size: 130%;
 }
 .playlist > tbody > tr:hover {
   color: red;
   cursor: pointer;
 }
-.playlist > tbody > tr .duration {
+.playlist > tbody > tr .position {
   text-align: right;
   min-width: 21%;
+}
+.playlist > tbody > tr .duration {
+  width: 5%;
+}
+.active-song {
+  font-weight: bold;
 }
 .lyrics-title {
   width: 100%;
@@ -418,6 +423,9 @@ iframe {
     font-size: 70px;
     margin-top: -60px;
     margin-left: -40px;
+  }
+  .generic-container.player {
+    padding-top: 50px;
   }
   .post .loader-container i {
     font-size: 50px;
@@ -516,6 +524,25 @@ iframe {
     width: 80%;
     padding-left: 0px;
     padding-top: 10px;
+  }
+  .player-controls {
+    margin-bottom: 50px;
+  }
+  .player-controls .player-buttons > a > i {
+    font-size: 350%;
+  }
+  .player-controls .seekBase {
+    height: 50px;
+  }
+  .player-controls .seekLoad {
+    height: 50px;
+  }
+  .playlist {
+    font-size: 250%;
+    line-height: 150%;
+  }
+  .lyrics-title {
+    padding-top: 50px;
   }
 }
 .current-song {
