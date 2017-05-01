@@ -12,6 +12,13 @@ $path = $_GET['path'];
 $entry = $dbxClient->getMetadataWithChildren($path);
 $contents = $entry['contents'];
 
+function cmp($a, $b)
+{
+    return strcmp($a->path, $b->path);
+}
+
+usort($contents, "cmp");
+
 $contentsArray = [];
 
 foreach($contents as $content){

@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="./Content/main.css" />
+    <link rel="shortcut icon" href="./Content/favicon.png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
@@ -34,7 +35,7 @@
         <div ng-controller="mainController">
             <div class="site-container">
                 <div class="loader-container loader-container-fixed"
-                     ng-show="getPostsAsync.isInProgress">
+                     ng-show="getPostsAndPhotosAsync.isInProgress">
                     <i class="fa fa-circle-o-notch fa-spin"></i>
                 </div>
                 <div class="header-container noselect">
@@ -64,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                <div ng-repeat="post in posts | postFilter:menuIndex"
+                <div ng-repeat="post in currentPostItems | postFilter:menuIndex"
                      ng-show="menuIndex === 0 || menuIndex === 1">
                     <div class="post"
                          ng-cloak>
@@ -118,6 +119,15 @@
                              ng-hide="::post.isPhotoAlbum">
                             <video-embed src="embed"></video-embed>
                         </div>
+                    </div>
+                </div>
+                <div class="generic-container pagination"
+                     ng-show="menuIndex === 0 || menuIndex === 1">
+                    <div class="post-pagination-container noselect">
+                        <div ng-click="decrementPageIndex()"
+                             ng-class="getPreviousPageClass()">Naujesni</div>
+                        <div ng-click="incrementPageIndex()"
+                             ng-class="getNextPageClass()">Senesni</div>
                     </div>
                 </div>
                 <div class="generic-container"

@@ -65,6 +65,14 @@
             };
             $scope.menuIndex = 0;
             $scope.setMenuIndex = function (index) {
+                if (index === 0) {
+                    $scope.setCurrentPostItemsAsPosts();
+                }
+
+                if (index === 1) {
+                    $scope.setCurrentPostItemsAsPhotos();
+                }
+
                 if (index === 3) {
                     $scope.initPlayer();
                 }
@@ -85,55 +93,254 @@
                 return 'inactive';
             }
 
-            $scope.pageIndex = 0;
+            $scope.currentPostItems = [];
             $scope.itemsPerPage = 5;
 
-            $scope.posts = [];
-            $scope.getPostsAsync = null;
-            $scope.getAllPosts = function () {
-                $scope.getPostsAsync = contentApi
+            $scope.postPageIndex = 0;
+            $scope.photoPageIndex = 0;
+
+            $scope.posts2 = [];
+            $scope.photos = [];
+            $scope.getPostsAndPhotosAsync = null;
+
+            $scope.getAllPostsAndPhotos = function () {
+                $scope.getPostsAndPhotosAsync = contentApi
                     .getPosts()
                     .then(function (posts) {
-                        $scope.posts = posts;
-                        $scope.getCurrentPagePostDetails();
+                        $scope.posts2 = posts.filter(
+                            function (post) {
+                                return post.path.indexOf("photo_") === -1;
+                            });
+
+                        $scope.photos = posts.filter(
+                            function (post) {
+                                return post.path.indexOf("post_") === -1;
+                            });
+
+                        $scope.setCurrentPostItemsAsPosts();
                     });
             };
 
-            $scope.getCurrentPagePostDetails = function () {
-                for (var i = $scope.pageIndex; i < $scope.itemsPerPage; i++) {
-                    if (i < $scope.posts.length) {
+            $scope.setCurrentPostItemsAsPosts = function () {
+                $scope.currentPostItems = [];
 
-                        $scope.posts[i].getDetailsAsync = contentApi
-                            .getPostDetails($scope.posts[i], i)
+                var maxValue = $scope.postPageIndex + $scope.itemsPerPage;
+                for (var i = $scope.postPageIndex; i < maxValue; i++) {
+                    if (i < $scope.posts2.length) {
+                        $scope.currentPostItems.push($scope.posts2[i]);
+
+                        if ($scope.posts2[i].details !== null) {
+                            continue;
+                        }
+
+                        $scope.posts2[i].getDetailsAsync = contentApi
+                            .getPostDetails($scope.posts2[i], i)
                             .then(function (postDetails) {
-                                $scope.setPostDetails(postDetails);
+                                $scope.setPostDetails2(postDetails);
                             });
                     }
                 }
             };
 
-            $scope.setPostDetails = function (postDetails) {
-                $scope.posts[postDetails.id].details = postDetails;
-                $scope.posts[postDetails.id].details.setContentApi(contentApi);
+            $scope.setCurrentPostItemsAsPhotos = function () {
+                $scope.currentPostItems = [];
+                var maxValue = $scope.photoPageIndex + $scope.itemsPerPage;
+                for (var i = $scope.photoPageIndex; i < maxValue; i++) {
+                    if (i < $scope.photos.length) {
+                        $scope.currentPostItems.push($scope.photos[i]);
+
+                        if ($scope.photos[i].details !== null) {
+                            continue;
+                        }
+
+                        $scope.photos[i].getDetailsAsync = contentApi
+                            .getPostDetails($scope.photos[i], i)
+                            .then(function (postDetails) {
+                                $scope.setPhotoDetails(postDetails);
+                            });
+                    }
+                }
+            };
+
+
+            $scope.setPostDetails2 = function (postDetails) {
+                $scope.posts2[postDetails.id].details = postDetails;
+                $scope.posts2[postDetails.id].details.setContentApi(contentApi);
 
                 if (_.isString(postDetails.infoLink)) {
-                    $scope.posts[postDetails.id].getDetailsAsync = contentApi
+                    $scope.posts2[postDetails.id].getDetailsAsync = contentApi
                         .getText(postDetails.infoLink)
                         .then(function (response) {
-                            $scope.posts[postDetails.id].details.set(response);
-                        });
-                }
-
-                if (_.isString(postDetails.photoAlbumPath)) {
-                    $scope.posts[postDetails.id].getPhotosAsync = contentApi
-                        .getContentItems(postDetails.photoAlbumPath)
-                        .then(function (photos) {
-                            $scope.posts[postDetails.id].details.addPhotos(photos);
+                            $scope.posts2[postDetails.id].details.set(response);
                         });
                 }
             };
 
-            $scope.getAllPosts();
+            $scope.setPhotoDetails = function (photoDetails) {
+                $scope.photos[photoDetails.id].details = photoDetails;
+                $scope.photos[photoDetails.id].details.setContentApi(contentApi);
+
+                if (_.isString(photoDetails.infoLink)) {
+                    $scope.photos[photoDetails.id].getDetailsAsync = contentApi
+                        .getText(photoDetails.infoLink)
+                        .then(function (response) {
+                            $scope.photos[photoDetails.id].details.set(response);
+                        });
+                }
+
+                if (_.isString(photoDetails.photoAlbumPath)) {
+                    $scope.photos[photoDetails.id].getPhotosAsync = contentApi
+                        .getContentItems(photoDetails.photoAlbumPath)
+                        .then(function (photos) {
+                            $scope.photos[photoDetails.id].details.addPhotos(photos);
+                        });
+                }
+            };
+
+            $scope.getAllPostsAndPhotos();
+
+            $scope.incrementPageIndex = function () {
+                if ($scope.menuIndex === 0) {
+                    $scope.postPageIndex = $scope.postPageIndex + $scope.itemsPerPage;
+
+                    if ($scope.postPageIndex > $scope.posts2.length) {
+                        $scope.decrementPageIndex();
+                    }
+
+                    $scope.setCurrentPostItemsAsPosts();
+                }
+
+                if ($scope.menuIndex === 1) {
+                    $scope.photoPageIndex = $scope.photoPageIndex + $scope.itemsPerPage;
+
+                    if ($scope.photoPageIndex > $scope.photos.length) {
+                        $scope.decrementPageIndex();
+                    }
+
+                    $scope.setCurrentPostItemsAsPhotos();
+                }
+            };
+
+            $scope.decrementPageIndex = function () {
+                if ($scope.menuIndex === 0) {
+                    $scope.postPageIndex = $scope.postPageIndex - $scope.itemsPerPage;
+
+                    if ($scope.postPageIndex < 0) {
+                        $scope.postPageIndex = 0;
+                    }
+
+                    $scope.setCurrentPostItemsAsPosts();
+                }
+
+                if ($scope.menuIndex === 1) {
+                    $scope.photoPageIndex = $scope.photoPageIndex - $scope.itemsPerPage;
+
+                    if ($scope.photoPageIndex < 0) {
+                        $scope.photoPageIndex = 0;
+                    }
+
+                    $scope.setCurrentPostItemsAsPhotos();
+                }
+            };
+
+            $scope.previousPageAvailable = function () {
+                if ($scope.menuIndex === 0) {
+                    var previousPageIndex = $scope.postPageIndex - $scope.itemsPerPage;
+                    if (previousPageIndex < 0) {
+                        return false;
+                    }
+                    return true;
+                }
+
+                if ($scope.menuIndex === 1) {
+                    var previousPageIndex = $scope.photoPageIndex - $scope.itemsPerPage;
+                    if (previousPageIndex < 0) {
+                        return false;
+                    }
+                    return true;
+                }
+            };
+
+            $scope.nextPageAvailable = function () {
+                if ($scope.menuIndex === 0) {
+                    var nextPageIndex = $scope.postPageIndex + $scope.itemsPerPage;
+                    if (nextPageIndex > $scope.posts2.length) {
+                        return false;
+                    }
+                    return true;
+                }
+
+                if ($scope.menuIndex === 1) {
+                    var nextPageIndex = $scope.photoPageIndex + $scope.itemsPerPage;
+                    if (nextPageIndex > $scope.photos.length) {
+                        return false;
+                    }
+                    return true;
+                }
+            };
+
+            $scope.getPreviousPageClass = function () {
+                if ($scope.previousPageAvailable()) {
+                    return 'post-pagination-button';
+                }
+                return 'post-pagination-button-disabled';
+            };
+
+            $scope.getNextPageClass = function () {
+                if ($scope.nextPageAvailable()) {
+                    return 'post-pagination-button';
+                }
+                return 'post-pagination-button-disabled';
+            };
+
+            //$scope.pageIndex = 0;
+
+            //$scope.posts = [];
+            //$scope.getPostsAsync = null;
+            //$scope.getAllPosts = function () {
+            //    $scope.getPostsAsync = contentApi
+            //        .getPosts()
+            //        .then(function (posts) {
+            //            $scope.posts = posts;
+            //            $scope.getCurrentPagePostDetails();
+            //        });
+            //};
+
+            //$scope.getCurrentPagePostDetails = function () {
+            //    for (var i = $scope.pageIndex; i <= $scope.itemsPerPage; i++) {
+            //        if (i < $scope.posts.length) {
+
+            //            $scope.posts[i].getDetailsAsync = contentApi
+            //                .getPostDetails($scope.posts[i], i)
+            //                .then(function (postDetails) {
+            //                    $scope.setPostDetails(postDetails);
+            //                });
+            //        }
+            //    }
+            //};
+
+            //$scope.setPostDetails = function (postDetails) {
+            //    $scope.posts[postDetails.id].details = postDetails;
+            //    $scope.posts[postDetails.id].details.setContentApi(contentApi);
+
+            //    if (_.isString(postDetails.infoLink)) {
+            //        $scope.posts[postDetails.id].getDetailsAsync = contentApi
+            //            .getText(postDetails.infoLink)
+            //            .then(function (response) {
+            //                $scope.posts[postDetails.id].details.set(response);
+            //            });
+            //    }
+
+            //    if (_.isString(postDetails.photoAlbumPath)) {
+            //        $scope.posts[postDetails.id].getPhotosAsync = contentApi
+            //            .getContentItems(postDetails.photoAlbumPath)
+            //            .then(function (photos) {
+            //                $scope.posts[postDetails.id].details.addPhotos(photos);
+            //            });
+            //    }
+            //};
+
+            //$scope.getAllPosts();
 
             $scope.albumManager = new AlbumManager();
             $scope.currentSongLyrics = '';

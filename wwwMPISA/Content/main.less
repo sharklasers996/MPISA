@@ -171,6 +171,34 @@ iframe {
     height: 60vh;
 }
 
+.post-pagination-container {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    > div {
+        width: 50%;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
+.post-pagination-button {
+    &:hover {
+        color: red;
+        cursor: pointer;
+    }
+}
+
+.post-pagination-button-disabled {
+    color: gray;
+
+    &:hover {
+        color: gray;
+        cursor: default;
+    }
+}
+
 .generic-container {
     background-color: white !important;
     margin-left: 25%;
@@ -182,6 +210,13 @@ iframe {
 .generic-container.player {
     margin-top: 10px;
     padding-top: 30px;
+}
+
+.generic-container.pagination {
+    margin-left: 25%;
+    width: 52%;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .header-container {
