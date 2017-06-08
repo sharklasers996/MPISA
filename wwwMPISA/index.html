@@ -5,13 +5,19 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <!--<link rel="stylesheet" href="./Content/font-awesome.css" />-->
     <link rel="stylesheet" href="./Content/main.css" />
     <link rel="shortcut icon" href="./Content/favicon.png">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
-    <script src="http://underscorejs.org/underscore.js"></script>
+    <script src="http://underscorejs.org/underscore.js"></script>-->
+    
+    <script src="./Scripts/libs/jquery.js"></script>
+    <script src="./Scripts/libs/angular.js"></script>
+    <script src="./Scripts/libs/angular-resource.js"></script>
+    <script src="./Scripts/libs/underscore.js"></script>
 
     <script src="./Scripts/tools.js"></script>
     <script src="./Scripts/libs/angular-soundmanager2.js"></script>
@@ -52,7 +58,8 @@
                         <div class="menu-desktop">
                             <a ng-class="getMenuItemClass(0)"
                                ng-click="setMenuIndex(0)">Įrašai</a>
-                            <a ng-class="getMenuItemClass(1)"
+                            <a class="menubtn-photos"
+                               ng-class="getMenuItemClass(1)"
                                ng-click="setMenuIndex(1)">Nuotraukos</a>
                             <a class="menubtn-bio"
                                ng-class="getMenuItemClass(2)"
@@ -138,19 +145,19 @@
                         <div class="bio-top-text">Grupė susikūrė 2012 metų rudenį, po pusantrų metų repetavimo ir narių kaitos įvyko pirmas koncertas, o po dar vienų ir pirmas albumas.</div>
                         <div class="bio-container-child">
                             <img class="bio-photo" src="./Content/Images/ausra.jpg" />
-                            <div class="bio-text">"Su Stasiu ir Deividu susipažinom per muzikantų pažinčių svetainę. Po pirmo pasimatymo buvo aišku, kad santykiai bus rimti. O ir tęsiasi jau nemažai metų, nors kasmet groju vis greičiau, bet pabėgti vis napavyksta."</div>
+                            <div class="bio-text">"Su Stasiu ir Deividu susipažinom per muzikantų pažinčių svetainę. Po pirmo pasimatymo buvo aišku, kad santykiai bus rimti. O ir tęsiasi jau nemažai metų, nors kasmet groju vis greičiau, bet pabėgti vis napavyksta." -Aušra</div>
                         </div>
                         <div class="bio-container-child">
                             <img class="bio-photo" src="./Content/Images/dvd3.png" />
-                            <div class="bio-text">"2012 rudenį įmečiau skelbimą į muzikantų svetainę su klausimu ar yra norinčių grot punk. Parašė Stasys, susitikom, išgėrėm, pasidalinom instrumentais. Geriam iki šiol, o gitarų nepaleidžiam."</div>
+                            <div class="bio-text">"2012 rudenį įmečiau skelbimą į muzikantų svetainę su klausimu ar yra norinčių grot punk. Parašė Stasys, susitikom, išgėrėm, pasidalinom instrumentais. Geriam iki šiol, o gitarų nepaleidžiam." -Deividas</div>
                         </div>
                         <div class="bio-container-child">
                             <img class="bio-photo" src="./Content/Images/gustas.png" />
-                            <div class="bio-text">"Prieš daugiau nei metus išėjo vokalistas (Kipras) ir Deividas sutikęs mane gatvėj paklausė ar norėčiau parėkaut. Buvo gan šaltoka, bet prašymas maloniai nuteikė ir aš pasinėriau į hardkorpunko liūną iš kurio išbristi visiškai nesiruošiu."</div>
+                            <div class="bio-text">"Prieš daugiau nei metus išėjo vokalistas (Kipras) ir Deividas sutikęs mane gatvėj paklausė ar norėčiau parėkaut. Buvo gan šaltoka, bet prašymas maloniai nuteikė ir aš pasinėriau į hardkorpunko liūną iš kurio išbristi visiškai nesiruošiu." -Gustas</div>
                         </div>
                         <div class="bio-container-child">
                             <img class="bio-photo" src="./Content/Images/stasys2.png" />
-                            <div class="bio-text">"???????????????? ???????????????? ???????????????? ???????????????????? ?????????? ?????? ???? ???? ???????????? ???? ???????????? ???? ???? ???????? ???????????? ???????? ???????? "</div>
+                            <div class="bio-text">"Perskaičiau Deivido skelbimą, norėjau pagrot, pavyko ir išgert, viskas vyko labai linksmai, kaip ir vyksta iki dabar." -Stasys</div>
                         </div>
                     </div>
                 </div>

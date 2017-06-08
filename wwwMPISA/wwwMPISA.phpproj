@@ -39,12 +39,17 @@
       <SubType>Content</SubType>
       <DependentUpon>compilerconfig.json</DependentUpon>
     </Content>
+    <Content Include="Content\font-awesome.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\main.less" />
     <Content Include="Content\main.min.css" />
     <Content Include="Dropbox\certs\trusted-certs.crt" />
     <Content Include="index.html" />
+    <Content Include="Scripts\libs\angular-resource.js" />
     <Content Include="Scripts\libs\angular-soundmanager2.js" />
+    <Content Include="Scripts\libs\angular.js" />
+    <Content Include="Scripts\libs\jquery.js" />
+    <Content Include="Scripts\libs\underscore.js" />
     <Content Include="Scripts\ng-app\api\models\content-item.js" />
     <Content Include="Scripts\ng-app\api\models\post-details.js" />
     <Content Include="Scripts\ng-app\api\models\post.js" />

@@ -114,12 +114,13 @@
         background: black;
         color: white;
         margin-bottom: 15px;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+        border-radius: 10px;
 
         > a > img {
             width: 100%;
             display: inline-block;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
         .loader-container {
@@ -261,7 +262,7 @@ iframe {
             border-color: white;
             border-top: 1px solid;
             border-bottom: 1px solid;
-            height: 97%;
+            height: 96%;
         }
 
         &:active {
@@ -290,20 +291,6 @@ iframe {
         display: flex;
     }
 }
-
-/*.music-album-title {
-    padding-left: 5%;
-    padding-top: 10px;
-    margin-bottom: 0px;
-}
-
-.soundcloud-container {
-    width: 90%;
-    margin-left: 5%;
-    padding-bottom: 10px;
-    border: none;
-    min-height: 460px;
-}*/
 
 .contact-container-wrapper {
     text-align: center;
@@ -355,6 +342,8 @@ iframe {
 .bio-top-text {
     text-align: center;
     margin-bottom: 20px;
+    width: 95%;
+    margin-left: 2%;
 }
 
 .bio-photo {
@@ -376,7 +365,7 @@ iframe {
     margin-right: auto;
     padding-top: 15px;
     padding-bottom: 15px;
-    width: 460px;
+    width: 230px;
 }
 
 .album-container {
@@ -483,6 +472,12 @@ iframe {
     padding-bottom: 20px;
 }
 
+@media screen and (min-width: 1600px) {
+    .generic-container.pagination {
+        width: 51.6%;
+    }
+}
+
 @media screen and (max-width: 1000px) {
 
     .loader-container {
@@ -572,6 +567,10 @@ iframe {
         padding-top: 50px;
     }
 
+    .generic-container.pagination {
+        margin-left: 3%;
+        width: 93%;
+    }
 
     .post {
 
@@ -590,6 +589,7 @@ iframe {
         .poster-text-container, .links-container {
             font-size: 130%;
             margin-left: 2%;
+            margin-top: 0px;
 
             .text-container {
                 font-size: 130%;
@@ -626,7 +626,16 @@ iframe {
                     margin-right: 15px;
                 }
             }
+
+            > div > i {
+                margin-top: -20px !important;
+                margin-left: -20px !important;
+            }
         }
+    }
+
+    .post-pagination-container {
+        font-size: 200%;
     }
 
     iframe {
@@ -660,6 +669,10 @@ iframe {
         .menubtn-music {
             margin-left: -15px;
         }
+
+        .menubtn-photos {
+            width: 30%;
+        }
     }
 
     .contact-container {
@@ -679,8 +692,6 @@ iframe {
     }
 
     .bio-top-text {
-        padding-left: 3%;
-        padding-right: 3%;
         font-size: 200%;
     }
 
@@ -718,6 +729,10 @@ iframe {
         }
     }
 
+    .album-container {
+        font-size: 200%;
+    }
+
     .playlist {
         font-size: 250%;
         line-height: 150%;
@@ -727,12 +742,6 @@ iframe {
         padding-top: 50px;
     }
 }
-
-
-
-
-
-
 
 .current-song {
     font-weight: bold;
