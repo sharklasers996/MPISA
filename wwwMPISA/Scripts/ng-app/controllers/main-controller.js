@@ -107,6 +107,9 @@
                 $scope.getPostsAndPhotosAsync = contentApi
                     .getPosts()
                     .then(function (posts) {
+                        posts = _.sortBy(posts, function (item) { return item.path; })
+                        posts = posts.reverse();
+
                         $scope.posts2 = posts.filter(
                             function (post) {
                                 return post.path.indexOf("photo_") === -1;
@@ -136,7 +139,7 @@
                         $scope.posts2[i].getDetailsAsync = contentApi
                             .getPostDetails($scope.posts2[i], i)
                             .then(function (postDetails) {
-                                $scope.setPostDetails2(postDetails);
+                                $scope.setPostDetails(postDetails);
                             });
                     }
                 }
@@ -163,7 +166,7 @@
             };
 
 
-            $scope.setPostDetails2 = function (postDetails) {
+            $scope.setPostDetails = function (postDetails) {
                 $scope.posts2[postDetails.id].details = postDetails;
                 $scope.posts2[postDetails.id].details.setContentApi(contentApi);
 
@@ -292,55 +295,6 @@
                 }
                 return 'post-pagination-button-disabled';
             };
-
-            //$scope.pageIndex = 0;
-
-            //$scope.posts = [];
-            //$scope.getPostsAsync = null;
-            //$scope.getAllPosts = function () {
-            //    $scope.getPostsAsync = contentApi
-            //        .getPosts()
-            //        .then(function (posts) {
-            //            $scope.posts = posts;
-            //            $scope.getCurrentPagePostDetails();
-            //        });
-            //};
-
-            //$scope.getCurrentPagePostDetails = function () {
-            //    for (var i = $scope.pageIndex; i <= $scope.itemsPerPage; i++) {
-            //        if (i < $scope.posts.length) {
-
-            //            $scope.posts[i].getDetailsAsync = contentApi
-            //                .getPostDetails($scope.posts[i], i)
-            //                .then(function (postDetails) {
-            //                    $scope.setPostDetails(postDetails);
-            //                });
-            //        }
-            //    }
-            //};
-
-            //$scope.setPostDetails = function (postDetails) {
-            //    $scope.posts[postDetails.id].details = postDetails;
-            //    $scope.posts[postDetails.id].details.setContentApi(contentApi);
-
-            //    if (_.isString(postDetails.infoLink)) {
-            //        $scope.posts[postDetails.id].getDetailsAsync = contentApi
-            //            .getText(postDetails.infoLink)
-            //            .then(function (response) {
-            //                $scope.posts[postDetails.id].details.set(response);
-            //            });
-            //    }
-
-            //    if (_.isString(postDetails.photoAlbumPath)) {
-            //        $scope.posts[postDetails.id].getPhotosAsync = contentApi
-            //            .getContentItems(postDetails.photoAlbumPath)
-            //            .then(function (photos) {
-            //                $scope.posts[postDetails.id].details.addPhotos(photos);
-            //            });
-            //    }
-            //};
-
-            //$scope.getAllPosts();
 
             $scope.albumManager = new AlbumManager();
             $scope.currentSongLyrics = '';

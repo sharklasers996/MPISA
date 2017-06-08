@@ -1,0 +1,24 @@
+[
+  {
+    "outputFileName": "Scripts/main.js",
+    "inputFiles": [
+      "Scripts/libs/jquery.js",
+      "Scripts/libs/angular.js",
+      "Scripts/libs/angular-resource.js",
+      "Scripts/libs/angular-soundmanager2.js",
+      "Scripts/libs/underscore.js",
+      "Scripts/tools.js",
+      "Scripts/ng-app/app.js",
+      "Scripts/ng-app/objects/async-result.js",
+      "Scripts/ng-app/objects/async-result-api-call.js",
+      "Scripts/ng-app/objects/album-manager.js",
+      "Scripts/ng-app/controllers/main-controller.js",
+      "Scripts/ng-app/directives/video-embed.js",
+      "Scripts/ng-app/filters/post-filter.js",
+      "Scripts/ng-app/api/models/content-item.js",
+      "Scripts/ng-app/api/models/post.js",
+      "Scripts/ng-app/api/models/post-details.js",
+      "Scripts/ng-app/api/service.js"
+    ]
+  }
+]
