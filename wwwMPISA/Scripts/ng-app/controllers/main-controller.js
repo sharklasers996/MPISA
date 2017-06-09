@@ -94,7 +94,7 @@
             }
 
             $scope.currentPostItems = [];
-            $scope.itemsPerPage = 5;
+            $scope.itemsPerPage = 3;
 
             $scope.postPageIndex = 0;
             $scope.photoPageIndex = 0;
@@ -206,7 +206,7 @@
                 if ($scope.menuIndex === 0) {
                     $scope.postPageIndex = $scope.postPageIndex + $scope.itemsPerPage;
 
-                    if ($scope.postPageIndex > $scope.posts2.length) {
+                    if ($scope.postPageIndex >= $scope.posts2.length) {
                         $scope.decrementPageIndex();
                     }
 
@@ -216,7 +216,7 @@
                 if ($scope.menuIndex === 1) {
                     $scope.photoPageIndex = $scope.photoPageIndex + $scope.itemsPerPage;
 
-                    if ($scope.photoPageIndex > $scope.photos.length) {
+                    if ($scope.photoPageIndex >= $scope.photos.length) {
                         $scope.decrementPageIndex();
                     }
 
@@ -267,7 +267,7 @@
             $scope.nextPageAvailable = function () {
                 if ($scope.menuIndex === 0) {
                     var nextPageIndex = $scope.postPageIndex + $scope.itemsPerPage;
-                    if (nextPageIndex > $scope.posts2.length) {
+                    if (nextPageIndex >= $scope.posts2.length) {
                         return false;
                     }
                     return true;
@@ -275,7 +275,7 @@
 
                 if ($scope.menuIndex === 1) {
                     var nextPageIndex = $scope.photoPageIndex + $scope.itemsPerPage;
-                    if (nextPageIndex > $scope.photos.length) {
+                    if (nextPageIndex >= $scope.photos.length) {
                         return false;
                     }
                     return true;
