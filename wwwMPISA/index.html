@@ -72,9 +72,9 @@
                                 </div>
 
                                 <a href="{{post.details.photoLinks[post.details.photoAlbumPageIndex]}}"
-                                   target="_blank"
-                                   ng-hide="post.getPhotosAsync.isInProgress">
-                                    <img ng-src="data:image/JPEG;base64,{{post.details.photoBytes[post.details.photoAlbumPageIndex]}}">
+                                   target="_blank">
+                                    <img ng-hide="post.getPhotosAsync.isInProgress" ng-src="data:image/JPEG;base64,{{post.details.photoBytes[post.details.photoAlbumPageIndex]}}">
+                                    <img ng-show="post.getPhotosAsync.isInProgress" src="{{post.details.posterLink}}"/>
                                 </a>
                                 <div class="photo-album-pagination">
                                     <a class="btn-photo-album"
