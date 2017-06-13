@@ -6,7 +6,7 @@
             function _getPosts() {
                 var request = ({
                     method: "get",
-                    url: window.location.href + "content.php?path=/Content"
+                    url: window.location.href + "content.php?path=Content/Posts"
                 });
 
                 return new AsyncResultApiCall($q, $http,

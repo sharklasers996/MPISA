@@ -1,59 +1,28 @@
 <?php
 
-require_once "./Dropbox/autoload.php";
-use \Dropbox as dbx;
-include 'token.php';
+$requestPath = $_GET['path'] . '/';
+$response = [];
 
-$appInfo = dbx\AppInfo::loadFromJsonFile("./appInfo.json");
-$webAuth = new dbx\WebAuthNoRedirect($appInfo, "PHP-Example/1.0");
-$dbxClient = new dbx\Client($token, "PHP-Example/1.0");
-
-$path = $_GET['path'];
-$entry = $dbxClient->getMetadataWithChildren($path);
-$contents = $entry['contents'];
-
-function cmp($a, $b)
-{
-    return strcmp($a->path, $b->path);
-}
-
-usort($contents, "cmp");
-
-$contentsArray = [];
-
-foreach($contents as $content){
-    $contentPath = $content['path'];
-    $contentMetadata = $dbxClient->getMetadata($contentPath);
-
-    $uploadedAt = null;
-    if(array_key_exists('client_mtime', $contentMetadata)){
-        $uploadedAt = $contentMetadata['client_mtime'];
+$directoryItems = scandir($requestPath);
+foreach($directoryItems as $dirItem){
+    if($dirItem == '.'
+        || $dirItem == '..'){
+        continue;
     }
 
-    $mimeType = null;
-    if(array_key_exists('mime_type', $contentMetadata)){
-        $mimeType = $contentMetadata['mime_type'];
-    }
+    $isDir = is_dir($requestPath . $dirItem);
+    $path = $requestPath . $dirItem;
 
-    $isDir = true;
-    $tempLink = null;
-    if($contentMetadata['is_dir'] == false){
-        $link = $dbxClient->createTemporaryDirectLink($contentPath);
-        $tempLink = $link[0];
-        $isDir = false;
-    }
-
-    $metadataArray = array(
-    'path' => $contentMetadata['path'],
-    'uploadedAt' => $uploadedAt,
-    'mimeType' => $mimeType,
-    'tempLink' => $tempLink,
-    'isDir' => $isDir
+    $dirItemData = array(
+        'path' => $path,
+        'tempLink' => 'http://mpisa.hardcore.lt/' . $path,
+        'isDir' => $isDir
     );
 
-    array_push($contentsArray, $metadataArray);
+    array_push($response, $dirItemData);
 }
 
-echo json_encode($contentsArray, JSON_FORCE_OBJECT);
+echo json_encode($response, JSON_FORCE_OBJECT);
 
 ?>
+

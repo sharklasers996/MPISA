@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="content.php" />
+    <Compile Include="content2.php" />
     <Compile Include="Dropbox\AppInfo.php" />
     <Compile Include="Dropbox\AppInfoLoadException.php" />
     <Compile Include="Dropbox\ArrayEntryStore.php" />

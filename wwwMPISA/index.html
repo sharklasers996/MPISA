@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <title>M.P.I.S.A</title>
     <meta charset="utf-8">
@@ -15,8 +16,7 @@
     <div ng-app="mpisaApp">
         <div ng-controller="mainController">
             <div class="site-container">
-                <div class="loader-container loader-container-fixed"
-                     ng-show="getPostsAndPhotosAsync.isInProgress">
+                <div class="loader-container loader-container-fixed" ng-show="getPostsAndPhotosAsync.isInProgress">
                     <i class="fa fa-circle-o-notch fa-spin"></i>
                 </div>
                 <div class="header-container noselect">
@@ -31,125 +31,108 @@
                         </div>
 
                         <div class="menu-desktop">
-                            <a ng-class="getMenuItemClass(0)"
-                               ng-click="setMenuIndex(0)">Įrašai</a>
-                            <a class="menubtn-photos"
-                               ng-class="getMenuItemClass(1)"
-                               ng-click="setMenuIndex(1)">Nuotraukos</a>
-                            <a class="menubtn-bio"
-                               ng-class="getMenuItemClass(2)"
-                               ng-click="setMenuIndex(2)">Bio</a>
-                            <a class="menubtn-music"
-                               ng-class="getMenuItemClass(3)"
-                               ng-click="setMenuIndex(3)">Muzika</a>
-                            <a ng-class="getMenuItemClass(4)"
-                               ng-click="setMenuIndex(4)">Kontaktas</a>
+                            <a ng-class="getMenuItemClass(0)" ng-click="setMenuIndex(0)">Įrašai</a>
+                            <a class="menubtn-photos" ng-class="getMenuItemClass(1)" ng-click="setMenuIndex(1)">Nuotraukos</a>
+                            <a class="menubtn-bio" ng-class="getMenuItemClass(2)" ng-click="setMenuIndex(2)">Bio</a>
+                            <a class="menubtn-music" ng-class="getMenuItemClass(3)" ng-click="setMenuIndex(3)">Muzika</a>
+                            <a ng-class="getMenuItemClass(4)" ng-click="setMenuIndex(4)">Kontaktas</a>
                         </div>
                     </div>
                 </div>
-                <div ng-repeat="post in currentPostItems | postFilter:menuIndex"
-                     ng-show="menuIndex === 0 || menuIndex === 1">
-                    <div class="post"
-                         ng-cloak>
-                        <div class="loader-container loader-container-absolute"
-                             ng-show="post.getDetailsAsync.isInProgress">
+                <div ng-repeat="post in currentPostItems | postFilter:menuIndex" ng-show="menuIndex === 0 || menuIndex === 1">
+                    <div class="post" ng-cloak>
+                        <div class="loader-container loader-container-absolute" ng-show="post.getDetailsAsync.isInProgress">
                             <i class="fa fa-circle-o-notch fa-spin"></i>
                         </div>
                         <h1>{{ post.details.title }}</h1>
-                        <div class="poster-text-container"
-                             ng-hide="::post.isPhotoAlbum">
+                        <div class="poster-text-container" ng-hide="::post.isPhotoAlbum">
                             <img src="{{post.details.posterLink}}" />
                             <div class="text-container">{{post.details.text}}</div>
                         </div>
-                        <div class="photo-album-text-container"
-                             ng-show="::post.isPhotoAlbum">
-                            <div class="photo-album-container noselect"
-                                 ng-hide="post.getDetailsAsync.isInProgress">
+                        <div class="photo-album-text-container" ng-show="::post.isPhotoAlbum">
+                            <div class="photo-album-container noselect" ng-hide="post.getDetailsAsync.isInProgress">
 
-                                <div class="loader-container loader-container-absolute"
-                                     ng-show="post.getPhotosAsync.isInProgress || post.details.getPhotoBytesAsync.isInProgress">
+                                <div class="loader-container loader-container-absolute" ng-show="post.getPhotosAsync.isInProgress || post.details.getPhotoBytesAsync.isInProgress">
                                     <i class="fa fa-circle-o-notch fa-spin"></i>
                                 </div>
 
-                                <a href="{{post.details.photoLinks[post.details.photoAlbumPageIndex]}}"
-                                   target="_blank">
+                                <a href="{{post.details.photoLinks[post.details.photoAlbumPageIndex]}}" target="_blank">
                                     <img ng-hide="post.getPhotosAsync.isInProgress" ng-src="data:image/JPEG;base64,{{post.details.photoBytes[post.details.photoAlbumPageIndex]}}">
-                                    <img ng-show="post.getPhotosAsync.isInProgress" src="{{post.details.posterLink}}"/>
+                                    <img ng-show="post.getPhotosAsync.isInProgress" src="{{post.details.posterLink}}" />
                                 </a>
                                 <div class="photo-album-pagination">
-                                    <a class="btn-photo-album"
-                                       ng-hide="post.getPhotosAsync.isInProgress"
-                                       ng-click="post.details.previousPhoto()"><i class="fa fa-step-backward"></i></a>
-                                    <span class="photo-album-page-counter"
-                                          ng-hide="post.getPhotosAsync.isInProgress">{{ post.details.photoAlbumPageIndex + 1}}/{{post.details.photoLinks.length}}</span>
-                                    <a class="btn-photo-album"
-                                       ng-hide="post.getPhotosAsync.isInProgress"
-                                       ng-click="post.details.nextPhoto()"><i class="fa fa-step-forward"></i></a>
+                                    <a class="btn-photo-album" ng-hide="post.getPhotosAsync.isInProgress" ng-click="post.details.previousPhoto()"><i class="fa fa-step-backward"></i></a>
+                                    <span class="photo-album-page-counter" ng-hide="post.getPhotosAsync.isInProgress">{{ post.details.photoAlbumPageIndex + 1}}/{{post.details.photoLinks.length}}</span>
+                                    <a class="btn-photo-album" ng-hide="post.getPhotosAsync.isInProgress" ng-click="post.details.nextPhoto()"><i class="fa fa-step-forward"></i></a>
                                 </div>
                             </div>
                             <div class="text-container">
                                 {{post.details.text}}
                             </div>
                         </div>
-                        <div class="links-container"
-                             ng-hide="::post.isPhotoAlbum">
-                            <a ng-repeat="link in post.details.links"
-                               href="{{link.url}}"
-                               target="_blank">{{link.text}}</a>
+                        <div class="links-container" ng-hide="::post.isPhotoAlbum">
+                            <a ng-repeat="link in post.details.links" href="{{link.url}}" target="_blank">{{link.text}}</a>
                         </div>
-                        <div ng-repeat="embed in post.details.embeds"
-                             ng-hide="::post.isPhotoAlbum">
+                        <div ng-repeat="embed in post.details.embeds" ng-hide="::post.isPhotoAlbum">
                             <video-embed src="embed"></video-embed>
                         </div>
                     </div>
                 </div>
-                <div class="generic-container pagination"
-                     ng-show="menuIndex === 0 || menuIndex === 1">
+                <div class="generic-container pagination" ng-show="menuIndex === 0 || menuIndex === 1">
                     <div class="post-pagination-container noselect">
-                        <div ng-click="decrementPageIndex()"
-                             ng-class="getPreviousPageClass()">Naujesni</div>
-                        <div ng-click="incrementPageIndex()"
-                             ng-class="getNextPageClass()">Senesni</div>
+                        <div ng-click="decrementPageIndex()" ng-class="getPreviousPageClass()">Naujesni</div>
+                        <div ng-click="incrementPageIndex()" ng-class="getNextPageClass()">Senesni</div>
                     </div>
                 </div>
-                <div class="generic-container"
-                     ng-show="menuIndex === 2">
+                <div class="generic-container" ng-show="menuIndex === 2">
                     <div class="bio-container noselect">
-                        <img class="bio-top-image"
-                             src="./Content/Images/bio-top.png" />
-                        <div class="bio-top-text">Grupė susikūrė 2012 metų rudenį, po pusantrų metų repetavimo ir narių kaitos įvyko pirmas koncertas, o po dar vienų ir pirmas albumas.</div>
+                        <img class="bio-top-image" src="./Content/Images/bio-top.png" />
+                        <div class="bio-top-text">
+                            Grupė susikūrė 2012 metų rudenį, po pusantrų metų repetavimo ir narių kaitos įvyko pirmas koncertas,
+                            o po dar vienų ir pirmas albumas.
+                        </div>
                         <div class="bio-container-child">
                             <img class="bio-photo" src="./Content/Images/ausra.jpg" />
-                            <div class="bio-text">"Su Stasiu ir Deividu susipažinom per muzikantų pažinčių svetainę. Po pirmo pasimatymo buvo aišku, kad santykiai bus rimti. O ir tęsiasi jau nemažai metų, nors kasmet groju vis greičiau, bet pabėgti vis napavyksta." -Aušra</div>
+                            <div class="bio-text">
+                                "Su Stasiu ir Deividu susipažinom per muzikantų pažinčių svetainę. Po pirmo pasimatymo buvo aišku,
+                                kad santykiai bus rimti. O ir tęsiasi jau nemažai metų, nors kasmet groju vis greičiau, bet
+                                pabėgti vis napavyksta." -Aušra
+                            </div>
                         </div>
                         <div class="bio-container-child">
                             <img class="bio-photo" src="./Content/Images/deividas.jpg" />
-                            <div class="bio-text">"2012 rudenį įmečiau skelbimą į muzikantų svetainę su klausimu ar yra norinčių grot punk. Parašė Stasys, susitikom, išgėrėm, pasidalinom instrumentais. Geriam iki šiol, o gitarų nepaleidžiam." -Deividas</div>
+                            <div class="bio-text">
+                                "2012 rudenį įmečiau skelbimą į muzikantų svetainę su klausimu ar yra norinčių grot punk. Parašė
+                                Stasys, susitikom, išgėrėm, pasidalinom instrumentais. Geriam iki šiol, o gitarų nepaleidžiam."
+                                -Deividas
+                            </div>
                         </div>
                         <div class="bio-container-child">
                             <img class="bio-photo" src="./Content/Images/gustas.jpg" />
-                            <div class="bio-text">"Prieš daugiau nei metus išėjo vokalistas (Kipras) ir Deividas sutikęs mane gatvėj paklausė ar norėčiau parėkaut. Buvo gan šaltoka, bet prašymas maloniai nuteikė ir aš pasinėriau į hardkorpunko liūną iš kurio išbristi visiškai nesiruošiu." -Gustas</div>
+                            <div class="bio-text">
+                                "Prieš daugiau nei metus išėjo vokalistas (Kipras) ir Deividas sutikęs mane gatvėj paklausė ar
+                                norėčiau parėkaut. Buvo gan šaltoka, bet prašymas maloniai nuteikė ir aš pasinėriau į hardkorpunko
+                                liūną iš kurio išbristi visiškai nesiruošiu." -Gustas
+                            </div>
                         </div>
                         <div class="bio-container-child">
                             <img class="bio-photo" src="./Content/Images/stasys.jpg" />
-                            <div class="bio-text">"Perskaičiau Deivido skelbimą, norėjau pagrot, pavyko ir išgert, viskas vyko labai linksmai, kaip ir vyksta iki dabar." -Stasys</div>
+                            <div class="bio-text">
+                                "Perskaičiau Deivido skelbimą, norėjau pagrot, pavyko ir išgert, viskas vyko labai linksmai,
+                                kaip ir vyksta iki dabar." -Stasys
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="generic-container"
-                     ng-show="menuIndex === 3">
+                <div class="generic-container" ng-show="menuIndex === 3">
                     <div class="album-collection-container noselect">
-                        <div ng-repeat="album in albumManager.albums"
-                             class="album-container"
-                             ng-class="getAlbumClass(album.title)"
-                             ng-click="setAlbum($index)">
+                        <div ng-repeat="album in albumManager.albums" class="album-container" ng-class="getAlbumClass(album.title)" ng-click="setAlbum($index)">
                             <img src="{{::album.cover}}" />
                             <span>{{::album.title}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="generic-container player"
-                     ng-show="menuIndex === 3">
+                <div class="generic-container player" ng-show="menuIndex === 3">
                     <div class="player-controls noselect">
                         <div class="player-buttons">
                             <a prev-track><i class="fa fa-step-backward"></i></a>
@@ -162,8 +145,7 @@
                     </div>
                     <table class="playlist">
                         <tbody ng-repeat="song in currentAlbum.songs">
-                            <tr music-player="play"
-                                add-song="song">
+                            <tr music-player="play" add-song="song">
                                 <td>{{::song.title}}</td>
                                 <td class="position">
                                     <span ng-show="song.title === currentSongTitle">{{currentPostion}} /</span>
@@ -181,16 +163,13 @@
                     </div>
 
                 </div>
-                <div class="generic-container"
-                     ng-show="menuIndex === 4">
+                <div class="generic-container" ng-show="menuIndex === 4">
                     <div class="contact-container-wrapper">
                         <div class="contact-container noselect">
-                            <a href="http://fb.me/MartynasPabegimasIrSunkinanciosAplinkybes"
-                               target="_blank"><i class="fa fa-facebook-official"></i>&nbsp;Martynas Pabėgimas ir Sunkinančios Aplinkybės</a>
+                            <a href="http://fb.me/MartynasPabegimasIrSunkinanciosAplinkybes" target="_blank"><i class="fa fa-facebook-official"></i>&nbsp;Martynas Pabėgimas ir Sunkinančios Aplinkybės</a>
                         </div>
                         <div class="contact-container">
-                            <a href="mailto:{{::contact}}"
-                               target="_blank"><i class="fa fa-envelope"></i>&nbsp;{{::contact}}</a>
+                            <a href="mailto:{{::contact}}" target="_blank"><i class="fa fa-envelope"></i>&nbsp;{{::contact}}</a>
                         </div>
                     </div>
                 </div>
@@ -198,4 +177,5 @@
         </div>
     </div>
 </body>
+
 </html>

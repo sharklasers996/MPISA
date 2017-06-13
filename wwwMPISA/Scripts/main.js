@@ -47233,8 +47233,6 @@ var ContentItem = function (contentItem) {
 ContentItem.prototype = {
     extend: function (contentItem) {
         this.path = contentItem.path;
-        this.uploadedAt = contentItem.uploadedAt;
-        this.mimeType = contentItem.mimeType;
         this.tempLink = contentItem.tempLink;
         this.isDir = contentItem.isDir;
     }
@@ -47362,7 +47360,7 @@ PostDetails.prototype = {
             function _getPosts() {
                 var request = ({
                     method: "get",
-                    url: window.location.href + "content.php?path=/Content"
+                    url: window.location.href + "content.php?path=Content/Posts"
                 });
 
                 return new AsyncResultApiCall($q, $http,
